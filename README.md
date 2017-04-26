@@ -28,7 +28,7 @@
   <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/sinalogin.gif" width="215" height="380" alt="图片2-1" />  
 
   ****
-   - 腾讯QQ第三方授权登录  
+   - 腾讯QQ第三方授权登录  (PS：腾讯QQ已经审核通过，可以使用QQ登录)
     <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/qqlogin01.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/qqlogin02.gif" width="215" height="380" alt="图片2-1" />  
 
    ****
