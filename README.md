@@ -14,7 +14,7 @@
    <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/bianse.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/search01.gif" width="215" height="380" alt="图片2-1" />  
 
   ****
-   > 分类 
+   > 分类  
      <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/scroll01.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/select.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/classifysel.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/classifdrop.gif" width="215" height="380" alt="图片2-1" />
  
   ****
