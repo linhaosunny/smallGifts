@@ -5,7 +5,7 @@
    > 首页
    - 广告滚动条  
    <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/home.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/homegun.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/homedian.gif" width="215" height="380" alt="图片2-1" />  
- <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/dropmenu.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/dianzan.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/homesel.gif" width="215" height="380" alt="图片2-1" />
+ <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/homedropmenu.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/dianzan.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/homesel.gif" width="215" height="380" alt="图片2-1" />
   ****
    - 摄像头二维码，条码真机  
    <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/qrcode.gif" width="215" height="380" alt="图片2-1" /><img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/nrcode.gif" width="215" height="380" alt="图片2-1" />  
@@ -18,7 +18,7 @@
    
  
   ****
-   > 
+   > 我
    - 登录界面
    - 短信验证  
   <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/smscheck.gif" width="215" height="380" alt="图片2-1" />  
@@ -28,8 +28,7 @@
    - 腾讯QQ第三方授权登录  
    <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/qqlogin01.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/qqlogin02.gif" width="215" height="380" alt="图片2-1" />  
    *****
-
-   
+  >
      
 
  
