@@ -13,15 +13,14 @@
    
  
   ****
-   > 个人
-   
+   > 我
+   - 新浪第三方授权登录
   <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/tu.gif" width="215" height="380" alt="图片2-1" />
-  <img src="https://github.com/coderLL/ShoppingGuide/blob/master/%E6%88%AA%E5%9B%BE/4-2.png" width="215" height="380" alt="图片4-2" /><img src="https://github.com/coderLL/ShoppingGuide/blob/master/%E6%88%AA%E5%9B%BE/4-3.png" width="215" height="380" alt="图片4-3" /><img src="https://github.com/coderLL/ShoppingGuide/blob/master/%E6%88%AA%E5%9B%BE/4-4.png" width="215" height="380" alt="图片4-4" /> 
   ****
 ## 预览
-   - 新浪第三方授权登录
+   
      
-   ![image](https://github.com/linhaosunny/smallGifts/blob/master/tu/tu.gif)
+
  
   
    
