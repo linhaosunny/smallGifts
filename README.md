@@ -1,5 +1,5 @@
 # smallGifts
-  - 小礼物是一款面向年轻的学生朋友和上班族的购物软件，主要推送一些有创意的小物件。开发环境xcode8.1,语言swift3.0,纯代理布局实现，使用的第三方框架LSXPropertTool,snapkit,Alamofire,ShareSDK,SMSSDK,等
+  - 小礼物是一款面向年轻的学生朋友和上班族的购物软件，主要推送一些有创意的小物件。开发环境xcode8.1,语言`swift3.0` 纯代理布局实现，使用的第三方框架`LSXPropertTool`,`snapkit`,`Alamofire`,`ShareSDK`,`SMSSDK`,等
   
 ## 真机上运行效果
    > 首页
