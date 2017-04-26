@@ -1,0 +1,70 @@
+PODS:
+  - Alamofire (4.4.0)
+  - LSXPropertyTool (0.0.9)
+  - MJRefresh (3.1.12)
+  - MOBFoundation_IDFA (2.2.19)
+  - QorumLogs (0.9)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - ShareSDK3 (3.6.3):
+    - MOBFoundation_IDFA
+    - ShareSDK3/ShareSDK (= 3.6.3)
+  - ShareSDK3/ShareSDK (3.6.3):
+    - MOBFoundation_IDFA
+  - ShareSDK3/ShareSDKPlatforms/QQ (3.6.3):
+    - MOBFoundation_IDFA
+  - ShareSDK3/ShareSDKPlatforms/SinaWeibo (3.6.3):
+    - MOBFoundation_IDFA
+  - ShareSDK3/ShareSDKPlatforms/WeChat (3.6.3):
+    - MOBFoundation_IDFA
+  - ShareSDK3/ShareSDKUI (3.6.3):
+    - MOBFoundation_IDFA
+  - SMSSDK (2.1.5):
+    - MOBFoundation_IDFA
+  - SnapKit (3.2.0)
+  - SVProgressHUD (2.1.2)
+  - SwiftyJSON (3.1.4)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.4.0)
+  - LSXPropertyTool (~> 0.0.9)
+  - MJRefresh (~> 3.1.12)
+  - MOBFoundation_IDFA
+  - QorumLogs
+  - SDWebImage (~> 4.0.0)
+  - ShareSDK3 (from `https://git.oschina.net/MobClub/ShareSDK-for-iOS-Spec.git`)
+  - ShareSDK3/ShareSDKPlatforms/QQ (from `https://git.oschina.net/MobClub/ShareSDK-for-iOS-Spec.git`)
+  - ShareSDK3/ShareSDKPlatforms/SinaWeibo (from `https://git.oschina.net/MobClub/ShareSDK-for-iOS-Spec.git`)
+  - ShareSDK3/ShareSDKPlatforms/WeChat (from `https://git.oschina.net/MobClub/ShareSDK-for-iOS-Spec.git`)
+  - ShareSDK3/ShareSDKUI (from `https://git.oschina.net/MobClub/ShareSDK-for-iOS-Spec.git`)
+  - SMSSDK
+  - SnapKit (~> 3.2.0)
+  - SVProgressHUD (~> 2.1.2)
+  - SwiftyJSON
+
+EXTERNAL SOURCES:
+  ShareSDK3:
+    :git: https://git.oschina.net/MobClub/ShareSDK-for-iOS-Spec.git
+
+CHECKOUT OPTIONS:
+  ShareSDK3:
+    :commit: 81eeabaa31e86b156ff16305ec5abeaee7a38697
+    :git: https://git.oschina.net/MobClub/ShareSDK-for-iOS-Spec.git
+
+SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  LSXPropertyTool: 2a487d2f4452d72f676d20d17fefd01fef144084
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MOBFoundation_IDFA: 4561562ab2364873a904a590dcdffea9f10ab8c6
+  QorumLogs: 9a484df6973a3697ac79fe2273140fde6b36dccc
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  ShareSDK3: 782fac3e79208983cc379b5f82ab4224853229d7
+  SMSSDK: 7d19654f9d36392988e96bf697afdac983808b1a
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+
+PODFILE CHECKSUM: f2fb22e41f6ed66dd15477696394b85ff52c543d
+
+COCOAPODS: 1.2.1

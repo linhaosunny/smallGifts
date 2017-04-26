@@ -1,0 +1,6 @@
+framework module LSXPropertyTool {
+  umbrella header "LSXPropertyTool-umbrella.h"
+
+  export *
+  module * { export * }
+}

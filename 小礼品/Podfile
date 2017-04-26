@@ -1,0 +1,41 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target '小礼品' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for 小礼品
+pod 'LSXPropertyTool', '~>0.0.9'           #个人写的属性生产器，字典转模型工具
+
+pod 'QorumLogs'                            #带颜色的log输出 Swift 3.0
+pod 'SnapKit', '~> 3.2.0'                  #Swift版本的AutoLayout 类似于OC 下的Masonry
+pod 'Alamofire', '~> 4.4.0'                #Swift 版本AFNetworking
+pod 'SVProgressHUD', '~> 2.1.2'            #目前只有OC 版本
+pod 'SDWebImage', '~> 4.0.0'               #SDWebImage
+pod 'MJRefresh', '~>3.1.12'                #MJRefresh
+
+pod 'SwiftyJSON'                           #IBM 的一个框架
+
+# Mod 分享功能 ShareSDK (注意：同时使用ShareSDK与SMSSDK,ShareSDK 要用spec的源)
+pod 'ShareSDK3',:git => ‘https://git.oschina.net/MobClub/ShareSDK-for-iOS-Spec.git'
+pod 'ShareSDK3/ShareSDKUI',:git => ‘https://git.oschina.net/MobClub/ShareSDK-for-iOS-Spec.git'
+pod 'ShareSDK3/ShareSDKPlatforms/QQ',:git => ‘https://git.oschina.net/MobClub/ShareSDK-for-iOS-Spec.git'        #QQ 分享
+pod 'ShareSDK3/ShareSDKPlatforms/SinaWeibo',:git => ‘https://git.oschina.net/MobClub/ShareSDK-for-iOS-Spec.git' #sina新浪微博
+pod 'ShareSDK3/ShareSDKPlatforms/WeChat',:git => ‘https://git.oschina.net/MobClub/ShareSDK-for-iOS-Spec.git'    #wechat微信
+
+# Mod 支持的SMSSDK短信验证功能
+pod 'MOBFoundation_IDFA'
+pod 'SMSSDK'                               #短信验证SDK
+
+  target '小礼品Tests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target '小礼品UITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

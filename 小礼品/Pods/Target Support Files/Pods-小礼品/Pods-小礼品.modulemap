@@ -1,0 +1,6 @@
+framework module Pods____ {
+  umbrella header "Pods-小礼品-umbrella.h"
+
+  export *
+  module * { export * }
+}
