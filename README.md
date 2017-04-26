@@ -19,16 +19,18 @@
  
   ****
    > 我
-   - 登录界面
+ 
    - 短信验证  
   <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/smscheck.gif" width="215" height="380" alt="图片2-1" />  
 
   ****
    - 新浪第三方授权登录  
   <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/sinalogin.gif" width="215" height="380" alt="图片2-1" />  
+
   ****
    - 腾讯QQ第三方授权登录  
     <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/qqlogin01.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/qqlogin02.gif" width="215" height="380" alt="图片2-1" />  
+
    ****
   >
      
