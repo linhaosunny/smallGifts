@@ -15,7 +15,7 @@
 
   ****
    > 分类 
-   <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/select.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/classifysel.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/classifydrop.gif" width="215" height="380" alt="图片2-1" />
+   <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/select.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/classifysel.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/classifdrop.gif" width="215" height="380" alt="图片2-1" />
  
   ****
    > 我
