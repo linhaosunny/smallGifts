@@ -15,9 +15,11 @@
   ****
    > 我
    - 新浪第三方授权登录
-  <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/tu.gif" width="215" height="380" alt="图片2-1" />
+  <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/sinalogin.gif" width="215" height="380" alt="图片2-1" />
+   - 腾讯QQ第三方授权登录
+<img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/qqlogin.gif" width="215" height="380" alt="图片2-1" />
   ****
-## 预览
+
    
      
 
