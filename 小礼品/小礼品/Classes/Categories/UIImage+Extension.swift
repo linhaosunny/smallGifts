@@ -21,6 +21,10 @@ extension UIImage {
         return image
     }
     
+    class func resize(withImage image:UIImage) -> UIImage {
+        return image.resizableImage(withCapInsets: UIEdgeInsets(top: image.size.height*0.5, left: image.size.width*0.5, bottom: image.size.height*0.5, right: image.size.width*0.5))
+    }
+    
     func resetImageSize(newWidth: CGFloat) -> UIImage {
         
         let scale = newWidth / self.size.width
@@ -34,4 +38,6 @@ extension UIImage {
         return newImage!
     
     }
+    
+    
 }

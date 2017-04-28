@@ -48,7 +48,7 @@ class SettingViewController: UIViewController {
     private func setupSettingView() {
         title = "设置"
         view.backgroundColor = SystemGlobalBackgroundColor
-        hideNavigationBar(isHiden: false)
+        
         
         //: 如果登录了显示退出按钮
         if AccountModel.isLogin() {

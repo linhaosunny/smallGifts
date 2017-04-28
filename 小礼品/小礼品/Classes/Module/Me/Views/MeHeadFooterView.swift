@@ -16,6 +16,7 @@ class MeHeadFooterView: UIView {
 //MARK: 懒加载
     lazy var ShoppingButton:CustomButton = { () -> CustomButton in
         let button = CustomButton(type: .custom)
+         button.tag = OptionButtonType.Order.rawValue
          button.setTitle("购物车", for: .normal)
          button.titleLabel?.font = fontSize12
          button.setTitleColor(ButtonTitleColor, for: .normal)
@@ -26,6 +27,7 @@ class MeHeadFooterView: UIView {
     
     lazy var OrderButton:CustomButton = { () -> CustomButton in
         let button = CustomButton(type: .custom)
+        button.tag = OptionButtonType.Order.rawValue
         button.setTitle("订单", for: .normal)
         button.titleLabel?.font = fontSize12
         button.setTitleColor(ButtonTitleColor, for: .normal)
@@ -36,6 +38,7 @@ class MeHeadFooterView: UIView {
     
     lazy var DiscountButton:CustomButton = { () -> CustomButton in
         let button = CustomButton(type: .custom)
+        button.tag = OptionButtonType.Discount.rawValue
         button.setTitle("礼券", for: .normal)
         button.titleLabel?.font = fontSize12
         button.setTitleColor(ButtonTitleColor, for: .normal)
@@ -46,6 +49,7 @@ class MeHeadFooterView: UIView {
     
     lazy var CustomerButton:CustomButton = { () -> CustomButton in
         let button = CustomButton(type: .custom)
+        button.tag = OptionButtonType.Custemer.rawValue
         button.setTitle("客服", for: .normal)
         button.titleLabel?.font = fontSize12
         button.setTitleColor(ButtonTitleColor, for: .normal)
@@ -120,12 +124,25 @@ class MeHeadFooterView: UIView {
     }
 //MARK: 内部响应
     @objc private func buttonClick(button:UIButton) {
-        delegate?.meHeadFooterViewButtonClick(button: button)
+        
+        delegate?.meHeadFooterViewButtonClick(withType:OptionButtonType(rawValue: button.tag)!)
     }
 }
 
 //MARk: 代理方法
 protocol MeHeadFooterViewDelegate:NSObjectProtocol {
-    func meHeadFooterViewButtonClick(button:UIButton)
+    func meHeadFooterViewButtonClick(withType type:OptionButtonType)
 }
 
+
+public enum OptionButtonType : Int {
+    
+    case Shopping
+    
+    case Order
+    
+    case Discount
+    
+    case Custemer
+    
+}

@@ -9,17 +9,6 @@
 import UIKit
 import SnapKit
 
-public enum OptionButtonType : Int {
-    
-    case Shopping
-    
-    case Order
-    
-    case Discount
-    
-    case Custemer
-    
-}
 
 public enum barButtonType : Int {
     
@@ -67,6 +56,11 @@ class MeViewController: UIViewController {
         super.viewWillAppear(animated)
         setupMeViewWhenWillAppear()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        setupMeViewWhenWillDisappear()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -101,6 +95,10 @@ class MeViewController: UIViewController {
     private func setupMeViewWhenWillAppear() {
         hideNavigationBar(isHiden: true)
         setupUpdateViewSubViewData()
+    }
+    
+    private func setupMeViewWhenWillDisappear() {
+        hideNavigationBar(isHiden: false)
     }
     
     private func setupMeView() {
@@ -222,9 +220,18 @@ extension MeViewController:MeHeaderViewDelegate,MeHeadFooterViewDelegate,MeFoote
         }
     }
     
-    func meHeadFooterViewButtonClick(button: UIButton) {
+    func meHeadFooterViewButtonClick(withType type:OptionButtonType) {
         if !AccountModel.isLogin() {
             present(loginViewController(), animated: true, completion: nil)
+        }
+        else{
+            
+            switch type {
+            case OptionButtonType.Custemer:
+              _ = navigationController?.pushViewController(ChatViewController(), animated: true)
+            default:
+                break
+            }
         }
     }
     
