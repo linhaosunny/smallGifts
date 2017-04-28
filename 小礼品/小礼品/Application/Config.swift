@@ -28,9 +28,9 @@ let QQ_APP_KEY = "jSyJCdzzLujGzdlN"
 
 //: 依赖动态库 (libsqlite3.tdb)
 //: 微信 相关 (http://open.weixin.qq.com/)
-//: 微信开发者平台收费,该号码为测试号
-let WX_APP_ID = "wx9b2a700702fbb9f2"
-let WX_APP_SECRET = "015a31842d7271f63211abe0b89e28ca"
+//: 微信开发者平台收费,审核通过
+let WX_APP_ID = "wx7699938555fb3387"
+let WX_APP_SECRET = "c9d07df0b3f5b59e8e69178f650fce14"
 
 //: 依赖动态库 (libsqlite3.tdb,mageIO.framework)
 //: Sina微博

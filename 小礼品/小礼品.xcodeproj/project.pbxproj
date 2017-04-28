@@ -125,6 +125,8 @@
 		85463C211EB27B9A00E2BB40 /* ImageChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85463C201EB27B9A00E2BB40 /* ImageChatCellViewModel.swift */; };
 		85463C231EB3415200E2BB40 /* ExpressionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85463C221EB3415200E2BB40 /* ExpressionMessage.swift */; };
 		85463C251EB341D800E2BB40 /* ExperssionChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85463C241EB341D800E2BB40 /* ExperssionChatCellViewModel.swift */; };
+		85463C271EB344D800E2BB40 /* VoiceMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85463C261EB344D800E2BB40 /* VoiceMessage.swift */; };
+		85463C291EB346C300E2BB40 /* VideoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85463C281EB346C300E2BB40 /* VideoMessage.swift */; };
 		8558AA711EA8DCDE00B59A49 /* seller5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8558AA701EA8DCDE00B59A49 /* seller5.jpg */; };
 		8558AA731EA8DCF900B59A49 /* seller4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8558AA721EA8DCF900B59A49 /* seller4.jpg */; };
 		8558AA751EA8DD2B00B59A49 /* seller2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8558AA741EA8DD2B00B59A49 /* seller2.jpg */; };
@@ -342,6 +344,8 @@
 		85463C201EB27B9A00E2BB40 /* ImageChatCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageChatCellViewModel.swift; sourceTree = "<group>"; };
 		85463C221EB3415200E2BB40 /* ExpressionMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressionMessage.swift; sourceTree = "<group>"; };
 		85463C241EB341D800E2BB40 /* ExperssionChatCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperssionChatCellViewModel.swift; sourceTree = "<group>"; };
+		85463C261EB344D800E2BB40 /* VoiceMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceMessage.swift; sourceTree = "<group>"; };
+		85463C281EB346C300E2BB40 /* VideoMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMessage.swift; sourceTree = "<group>"; };
 		8558AA701EA8DCDE00B59A49 /* seller5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = seller5.jpg; sourceTree = "<group>"; };
 		8558AA721EA8DCF900B59A49 /* seller4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = seller4.jpg; sourceTree = "<group>"; };
 		8558AA741EA8DD2B00B59A49 /* seller2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = seller2.jpg; sourceTree = "<group>"; };
@@ -858,6 +862,8 @@
 				85463C181EB25D3000E2BB40 /* TextMessage.swift */,
 				85463C1C1EB2783600E2BB40 /* ImageMessage.swift */,
 				85463C221EB3415200E2BB40 /* ExpressionMessage.swift */,
+				85463C261EB344D800E2BB40 /* VoiceMessage.swift */,
+				85463C281EB346C300E2BB40 /* VideoMessage.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -1472,6 +1478,7 @@
 				850843F91EAF9031001BEEF4 /* NetworkTools.swift in Sources */,
 				852E2B671EB165AD0065F5D0 /* Date+Extension.swift in Sources */,
 				850844951EAF91DE001BEEF4 /* StrategyColumnSubCell.swift in Sources */,
+				85463C291EB346C300E2BB40 /* VideoMessage.swift in Sources */,
 				850843F21EAF8FD8001BEEF4 /* UIBarButtonItem+Extension.swift in Sources */,
 				852E2B791EB2290D0065F5D0 /* ChatExpression.swift in Sources */,
 				850844831EAF91DE001BEEF4 /* ClassifySingleListViewController.swift in Sources */,
@@ -1515,6 +1522,7 @@
 				850844961EAF91DE001BEEF4 /* StrategyColumnSubCellViewModel.swift in Sources */,
 				8508447E1EAF91DE001BEEF4 /* SearchViewController.swift in Sources */,
 				852E2B6E1EB1B0B70065F5D0 /* TextChatCell.swift in Sources */,
+				85463C271EB344D800E2BB40 /* VoiceMessage.swift in Sources */,
 				850844AA1EAF91DE001BEEF4 /* MeHeadFooterView.swift in Sources */,
 				850843D01EAF45E5001BEEF4 /* AppDelegate.swift in Sources */,
 				8508449C1EAF91DE001BEEF4 /* HotViewController.swift in Sources */,

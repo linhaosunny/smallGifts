@@ -103,7 +103,7 @@ class BaseChatCell: UITableViewCell {
         avatarButton.snp.remakeConstraints { (make) in
             make.width.height.equalTo(margin*4)
             make.top.equalTo(timeLabel.snp.bottom).offset(margin*1.2)
-            if self.baseViewModel!.avatarLocation == .right {
+            if self.baseViewModel!.viewLocation == .right {
                 make.right.equalToSuperview().offset(-margin*0.8)
             }
             else{
@@ -113,7 +113,7 @@ class BaseChatCell: UITableViewCell {
         
         nameLabel.snp.remakeConstraints { (make) in
             make.top.equalTo(avatarButton).offset(-margin*0.1)
-             if self.baseViewModel!.avatarLocation == .right {
+             if self.baseViewModel!.viewLocation == .right {
                 make.right.equalTo(avatarButton.snp.left).offset(-margin*0.1)
             }
              else {
@@ -122,8 +122,8 @@ class BaseChatCell: UITableViewCell {
             
         }
         
-        backView.snp.makeConstraints { (make) in
-            if self.baseViewModel!.avatarLocation == .right {
+        backView.snp.remakeConstraints { (make) in
+            if self.baseViewModel!.viewLocation == .right {
                 make.right.equalTo(avatarButton.snp.left).offset(-margin*0.5)
             }
             else {
@@ -132,7 +132,7 @@ class BaseChatCell: UITableViewCell {
             make.top.equalTo(nameLabel.snp.bottom).offset(-margin*0.1)
         }
         
-        nameLabel.snp.makeConstraints { (make) in
+        nameLabel.snp.updateConstraints { (make) in
             make.height.equalTo(margin*1.4)
         }
         

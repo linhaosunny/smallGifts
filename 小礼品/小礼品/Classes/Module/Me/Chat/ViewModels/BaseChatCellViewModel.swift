@@ -22,7 +22,7 @@ class BaseChatCellViewModel: NSObject {
     var timeLabelText:String?
     var avatarImage:UIImage?
     var avatarUrl:URL?
-    var avatarLocation:layoutLocation?
+    var viewLocation:layoutLocation?
     var showNameLabel:Bool = true
     
     init(withMsgModel msg:MessageModel) {
@@ -47,10 +47,10 @@ class BaseChatCellViewModel: NSObject {
         
         //: 更新布局位置
         if msg.source == .myself {
-            avatarLocation = layoutLocation(rawValue: layoutLocation.right.rawValue)
+            viewLocation = layoutLocation(rawValue: layoutLocation.right.rawValue)
         }
         else {
-            avatarLocation = layoutLocation(rawValue: layoutLocation.left.rawValue)
+            viewLocation = layoutLocation(rawValue: layoutLocation.left.rawValue)
         }
 
         

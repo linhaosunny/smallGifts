@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class TextChatCell: BaseChatCell {
 
@@ -14,6 +15,18 @@ class TextChatCell: BaseChatCell {
         didSet{
             super.baseViewModel = viewModel
             
+            //: 设置内容
+            msgLabel.attributedText = viewModel!.msgAttributedText
+            //: 设置背景图片
+            backView.image = viewModel!.msgBackViewImage
+            backView.highlightedImage = viewModel!.msgBackViewSelImage
+            
+            //: 内容压缩阻力优先级
+            msgLabel.setContentCompressionResistancePriority(500, for: .horizontal)
+            backView.setContentCompressionResistancePriority(100, for: .vertical)
+            
+            //: 界面布局
+            layoutTextChatCell()
         }
     }
     
@@ -39,6 +52,35 @@ class TextChatCell: BaseChatCell {
 //MARK: 私有方法
     private func setupTextChatCell() {
         addSubview(msgLabel)
+    }
+    
+    private func layoutTextChatCell() {
+        if self.viewModel!.viewLocation == .right {
+            msgLabel.snp.makeConstraints({ (make) in
+                make.right.equalTo(backView).offset(-margin*2.0)
+               
+            })
+            
+            backView.snp.updateConstraints({ (make) in
+                make.left.equalTo(msgLabel).offset(-margin*2.0)
+                make.bottom.equalTo(msgLabel).offset(margin*2.0)
+            })
+        }
+        else  {
+            msgLabel.snp.makeConstraints({ (make) in
+                make.left.equalTo(backView).offset(margin*2.0)
+            })
+            
+            backView.snp.updateConstraints({ (make) in
+                make.right.equalTo(msgLabel).offset(margin*2.0)
+                make.bottom.equalTo(msgLabel).offset(margin*2.0)
+            })
+        }
+        
+        msgLabel.snp.updateConstraints { (make) in
+            make.size.equalTo(viewModel!.viewFrame!.contentSize)
+            make.top.equalTo(backView).offset(margin*1.4)
+        }
     }
    
 }
