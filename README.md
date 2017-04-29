@@ -33,6 +33,10 @@
    - 微信第三方授权登录  (PS：微信已经审核通过,未开放登录功能涉及用户账号安全，目前暂不开放) 
    <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/loginwx.gif" width="215" height="380" alt="图片2-1" />  
    ****
+
+   - IM (客服)  
+    <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/im.gif" width="215" height="380" alt="图片2-1" />  
+   ****
   >
      
 
