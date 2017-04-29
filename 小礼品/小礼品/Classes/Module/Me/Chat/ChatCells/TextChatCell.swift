@@ -10,30 +10,39 @@ import UIKit
 import SnapKit
 
 class TextChatCell: BaseChatCell {
-
+    
     var viewModel: TextChatCellViewModel? {
         didSet{
-            super.baseViewModel = viewModel
+            
+            super.baseViewModel = viewModel! as BaseChatCellViewModel
             
             //: 设置内容
             msgLabel.attributedText = viewModel!.msgAttributedText
+            msgLabel.numberOfLines = 0
             //: 设置背景图片
             backView.image = viewModel!.msgBackViewImage
             backView.highlightedImage = viewModel!.msgBackViewSelImage
             
             //: 内容压缩阻力优先级
-            msgLabel.setContentCompressionResistancePriority(500, for: .horizontal)
-            backView.setContentCompressionResistancePriority(100, for: .vertical)
+            msgLabel.setContentCompressionResistancePriority(1000, for: .horizontal)
+            msgLabel.setContentCompressionResistancePriority(1000, for: .vertical)
+            backView.setContentCompressionResistancePriority(500, for: .horizontal)
+            backView.setContentCompressionResistancePriority(500, for: .vertical)
             
             //: 界面布局
-            layoutTextChatCell()
+            
+            guard let viewFrame = viewModel?.viewFrame else {
+                return
+            }
+            
+            layoutTextChatCell(viewFrame)
+            
         }
     }
     
 //MARK: 懒加载
     lazy var msgLabel: UILabel = { () -> UILabel in
         let label = UILabel()
-        label.font = fontSize16
         label.numberOfLines = 0
         return label
     }()
@@ -49,38 +58,44 @@ class TextChatCell: BaseChatCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
 //MARK: 私有方法
     private func setupTextChatCell() {
         addSubview(msgLabel)
     }
     
-    private func layoutTextChatCell() {
+    private func layoutTextChatCell(_ viewFrame:ViewFrame) {
         if self.viewModel!.viewLocation == .right {
-            msgLabel.snp.makeConstraints({ (make) in
+            msgLabel.snp.remakeConstraints({ (make) in
                 make.right.equalTo(backView).offset(-margin*2.0)
+                make.size.equalTo(viewFrame.contentSize)
+                make.top.equalTo(backView).offset(margin*1.4)
                
             })
             
-            backView.snp.updateConstraints({ (make) in
+            backView.snp.remakeConstraints({ (make) in
                 make.left.equalTo(msgLabel).offset(-margin*2.0)
                 make.bottom.equalTo(msgLabel).offset(margin*2.0)
+                make.right.equalTo(avatarButton.snp.left).offset(-margin*0.5)
+                make.top.equalTo(nameLabel.snp.bottom).offset(-margin*0.1)
             })
         }
         else  {
-            msgLabel.snp.makeConstraints({ (make) in
+            msgLabel.snp.remakeConstraints({ (make) in
                 make.left.equalTo(backView).offset(margin*2.0)
+                make.size.equalTo(viewFrame.contentSize)
+                make.top.equalTo(backView).offset(margin*1.4)
             })
             
-            backView.snp.updateConstraints({ (make) in
-                make.right.equalTo(msgLabel).offset(margin*2.0)
+            backView.snp.remakeConstraints({ (make) in
+                make.right.equalTo(msgLabel.snp.right).offset(margin*2.0)
                 make.bottom.equalTo(msgLabel).offset(margin*2.0)
+                make.top.equalTo(nameLabel.snp.bottom).offset(-margin*0.1)
+                make.left.equalTo(avatarButton.snp.right).offset(margin*0.5)
             })
         }
-        
-        msgLabel.snp.updateConstraints { (make) in
-            make.size.equalTo(viewModel!.viewFrame!.contentSize)
-            make.top.equalTo(backView).offset(margin*1.4)
-        }
+       
     }
    
 }

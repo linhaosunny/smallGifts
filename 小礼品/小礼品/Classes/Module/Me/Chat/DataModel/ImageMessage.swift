@@ -14,5 +14,10 @@ class ImageMessage: MessageModel {
     
     //: 网络图片路径
     var imageUrl:String?
-    
+ 
+//MARK: 构造方法
+    override init() {
+        super.init()
+        type = .image
+    }
 }

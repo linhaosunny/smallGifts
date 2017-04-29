@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import QorumLogs
 
-fileprivate let maxMessageWidth:CGFloat = ScreenWidth * 0.58
+fileprivate let maxMessageWidth:CGFloat = ScreenWidth * 0.6
 
 class TextChatCellViewModel: BaseChatCellViewModel {
     private var msg:TextMessage?
@@ -22,8 +23,6 @@ class TextChatCellViewModel: BaseChatCellViewModel {
     //: 消息选中背景图片
     var msgBackViewSelImage:UIImage?
     
-    
-    var viewFrame:ViewFrame?
 
     init(withTextMessage msg:TextMessage){
         self.msg = msg
@@ -32,20 +31,26 @@ class TextChatCellViewModel: BaseChatCellViewModel {
         msgAttributedText = msg.attrText
         //: 消息来源
         if msg.source == .myself {
-            msgBackViewImage = UIImage(named: "")
-            msgBackViewImage = UIImage(named: "")
+            msgBackViewImage = #imageLiteral(resourceName: "SenderTextNodeBkg")
+            msgBackViewSelImage = #imageLiteral(resourceName: "SenderTextNodeBkgHL")
         }
         else{
-            msgBackViewImage = UIImage(named: "")
-            msgBackViewImage = UIImage(named: "")
+            msgBackViewImage = #imageLiteral(resourceName: "ReceiverTextNodeBkg")
+            msgBackViewSelImage = #imageLiteral(resourceName: "ReceiverTextNodeBkgHL")
         }
-        //: 消息高度
-        let label = UILabel()
-        label.attributedText = msg.attrText
-        
+
         //: 设置Label大小
-        viewFrame?.contentSize = label.sizeThatFits(CGSize(width: maxMessageWidth, height: CGFloat(MAXFLOAT)))
-        viewFrame?.height = (viewFrame?.contentSize.height)!
+        var size = msgAttributedText!.sizeToFits(CGSize(width: maxMessageWidth, height: CGFloat(MAXFLOAT)))
+        if size == .zero {
+            QL4("富文本字体自适应失败！")
+        }
+
+        size.height += margin*0.5
+//        size.width  += margin*0.5
+        viewFrame.contentSize = size
+        viewFrame.height += viewFrame.contentSize.height 
     }
+    
+    
     
 }

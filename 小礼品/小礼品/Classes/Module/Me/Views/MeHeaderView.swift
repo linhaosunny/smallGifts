@@ -135,7 +135,7 @@ class MeHeaderView: UIView {
         genderImage.snp.makeConstraints { (make) in
             make.left.equalTo(headImage.snp.right)
             make.bottom.equalTo(headImage.snp.bottom)
-            make.width.height.equalTo(margin*1.4)
+            make.width.height.equalTo(margin*1.2)
         }
         
         headIconButton.snp.makeConstraints { (make) in

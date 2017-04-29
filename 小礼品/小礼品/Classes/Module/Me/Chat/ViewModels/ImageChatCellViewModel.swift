@@ -8,6 +8,13 @@
 
 import UIKit
 
-class ImageChatCellViewModel: NSObject {
+class ImageChatCellViewModel: BaseChatCellViewModel {
+    private var msg:ImageMessage?
     var imageSize:CGSize = .zero
+    
+    init(withImageMessage msg:ImageMessage){
+        self.msg = msg
+        super.init(withMsgModel: msg as MessageModel)
+        
+    }
 }

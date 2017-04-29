@@ -34,5 +34,10 @@ class VoiceMessage: MessageModel {
     //: 录音状态 
     var status:RecordStatus = RecordStatus(rawValue: 0)!
     
+//MARK: 构造方法
+    override init() {
+        super.init()
+        type = .voice
+    }
     
 }

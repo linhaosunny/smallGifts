@@ -21,4 +21,9 @@ class VideoMessage: MessageModel {
     //: 视频预览图网络路径
     var imageUrl:String?
     
+    override init() {
+        super.init()
+        
+        type = .video
+    }
 }

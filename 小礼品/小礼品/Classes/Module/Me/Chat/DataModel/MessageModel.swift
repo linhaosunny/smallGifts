@@ -77,7 +77,7 @@ public enum MessageType : Int {
 
 class MessageModel: NSObject {
     //: 消息ID
-    var msgID:String?
+    var id:String?
     //: 发送者ID
     var uid:String?
     //: 接收者ID
@@ -91,7 +91,15 @@ class MessageModel: NSObject {
     //: 发送用户信息
     var fromUsr:UserModel?
     //: 消息来源
-    var source:MessageSource = MessageSource(rawValue: 0)!
+    var source:MessageSource = MessageSource(rawValue: 0)! {
+        didSet{
+            //: 如果是发送消息自动获取时间
+            if source == .myself {
+                date = Date()
+                fromUsr = AccountModel.shareAccount()!.toUserModel()
+            }
+        }
+    }
     //: 消息所有者
     var owner:MessageOwner = MessageOwner(rawValue: 0)!
     //: 消息类型
@@ -106,26 +114,10 @@ class MessageModel: NSObject {
         super.init()
         
         //: 初始化消息id 
-        msgID = String(format: "%lld", Date().timeIntervalSince1970 * 1000)
+        id = String(format: "%lld", Date().timeIntervalSince1970 * 1000)
+
     }
     
 //MARK: 外部接口
-    //: 创建消息对象
-    class func create(withType type:MessageType) -> MessageModel? {
-        var classType:String?
-        switch type {
-        case .text:
-            classType = "TextMessage"
-        case .image:
-            classType = "ImageMessage"
-        case .voice:
-            classType = "VoiceMessage"
-        case .video:
-            classType = "VideoMessage"
-        default:
-            break;
-        }
-        
-        return NSObject.objectInstatnce(withClassName: classType) as? MessageModel
-    }
+ 
 }

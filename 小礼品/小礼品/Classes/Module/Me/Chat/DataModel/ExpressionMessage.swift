@@ -14,4 +14,10 @@ class ExpressionMessage: MessageModel {
     var path:String?
     
     var url:String?
+    
+//: 构造方法
+    override init() {
+        super.init()
+        type = .Expression
+    }
 }

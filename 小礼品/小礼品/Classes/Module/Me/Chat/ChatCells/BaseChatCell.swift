@@ -25,16 +25,20 @@ class BaseChatCell: UITableViewCell {
                 avatarButton.sd_setImage(with: baseViewModel?.avatarUrl, for: .normal)
             }
             
-            nameLabel.isHidden = !baseViewModel!.showNameLabel
+            //：设置头像圆角
+            let width = baseViewModel!.avatarWidth
+            setupAvatarCornerRadius(width: width)
             
-            updateLayout()
+            nameLabel.isHidden = !baseViewModel!.showNameLabel
+            timeLabel.font = baseViewModel?.timeLabelFont
+            
+            updateLayout(withAvatarWidth: width)
         }
     }
 //MARK: 懒加载
     //: 时间戳
     lazy var timeLabel:UILabel = { () -> UILabel in
         let label = UILabel()
-        label.font = fontSize12
         label.textColor = UIColor.white
         label.backgroundColor = UIColor.gray
         label.alpha = 0.7
@@ -46,6 +50,7 @@ class BaseChatCell: UITableViewCell {
     //: 用户头像
     lazy var avatarButton:UIButton = { () -> UIButton in
         let button = UIButton(type: .custom)
+        button.setImage(#imageLiteral(resourceName: "me_avatar_boy"), for: .normal)
         button.layer.masksToBounds = true
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor(white: 0.7, alpha: 1.0).cgColor
@@ -82,26 +87,21 @@ class BaseChatCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupBaseChatCell()
+        setupBaseChatCellSubView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        setupBaseChatCellSubView()
-    }
 //MARK: 私有方法
-    private func updateLayout() {
-        timeLabel.snp.updateConstraints { (make) in
+    private func updateLayout(withAvatarWidth width:CGFloat) {
+        timeLabel.snp.makeConstraints { (make) in
             make.height.equalTo(margin*2)
-            make.top.equalToSuperview().offset(margin)
         }
         
         avatarButton.snp.remakeConstraints { (make) in
-            make.width.height.equalTo(margin*4)
+            make.width.height.equalTo(width)
             make.top.equalTo(timeLabel.snp.bottom).offset(margin*1.2)
             if self.baseViewModel!.viewLocation == .right {
                 make.right.equalToSuperview().offset(-margin*0.8)
@@ -109,6 +109,7 @@ class BaseChatCell: UITableViewCell {
             else{
                 make.left.equalToSuperview().offset(margin*0.8)
             }
+            
         }
         
         nameLabel.snp.remakeConstraints { (make) in
@@ -119,7 +120,7 @@ class BaseChatCell: UITableViewCell {
              else {
                 make.left.equalTo(avatarButton.snp.left).offset(margin*0.1)
             }
-            
+            make.height.equalTo(margin*1.4)
         }
         
         backView.snp.remakeConstraints { (make) in
@@ -127,20 +128,16 @@ class BaseChatCell: UITableViewCell {
                 make.right.equalTo(avatarButton.snp.left).offset(-margin*0.5)
             }
             else {
-                make.left.equalTo(avatarButton.snp.left).offset(margin*0.5)
+                make.left.equalTo(avatarButton.snp.right).offset(margin*0.5)
             }
             make.top.equalTo(nameLabel.snp.bottom).offset(-margin*0.1)
         }
         
-        nameLabel.snp.updateConstraints { (make) in
-            make.height.equalTo(margin*1.4)
-        }
         
     }
     
     
     private func setupBaseChatCellSubView() {
-        DispatchQueue.once(token: "BaseChatCell.setupSubView") {
             
             timeLabel.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(margin)
@@ -162,7 +159,6 @@ class BaseChatCell: UITableViewCell {
                 make.right.equalTo(avatarButton.snp.left).offset(-margin*0.5)
                 make.top.equalTo(nameLabel.snp.bottom).offset(-margin*0.1)
             }
-        }
     }
     
     private func setupBaseChatCell() {
@@ -176,6 +172,9 @@ class BaseChatCell: UITableViewCell {
         
     }
     
+    private func setupAvatarCornerRadius(width:CGFloat) {
+         avatarButton.layer.cornerRadius = width*0.5
+    }
     
 //MARK: 内部响应
     @objc private func avatarButtonClick(button:UIButton) {

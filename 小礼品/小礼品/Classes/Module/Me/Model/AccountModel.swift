@@ -96,6 +96,19 @@ class AccountModel: NSObject,NSCoding {
        say = aDecoder.decodeObject(forKey: "say_key")  as? String
        sex = aDecoder.decodeInteger(forKey: "sex_key") as Int
     }
+    
+    //: 账户模型转对外数据模型
+    func toUserModel() -> UserModel{
+        assert(AccountModel.isLogin(), "用户登陆后才可以获取用户信息！")
+        
+        let user = UserModel()
+        
+        user.uid = uid
+        user.avatarUrl = avatar
+        user.nickname = nickname
+        
+        return user
+    }
 }
 
 //MARK: 登陆相关
@@ -103,7 +116,7 @@ extension AccountModel {
     /**
      第三方登录
      
-     - parameter type:     类型 qq weibo
+     - parameter type:     类型 qq weibo wechat
      - parameter openid:   uid
      - parameter token:    token
      - parameter nickname: 昵称

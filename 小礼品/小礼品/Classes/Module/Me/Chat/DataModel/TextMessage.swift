@@ -12,9 +12,14 @@ class TextMessage: MessageModel {
     //: 文字信息
     var text:String?{
         didSet{
-            attrText = text?.ToMsgString()
+            attrText = text!.toMsgString()
         }
     }
     //: 格式化的富文本
     var attrText:NSAttributedString?
+//MARK: 构造方法
+    override init() {
+        super.init()
+        type = .text
+    }
 }

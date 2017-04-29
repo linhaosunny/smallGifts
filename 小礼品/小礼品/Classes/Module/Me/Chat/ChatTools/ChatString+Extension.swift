@@ -11,9 +11,14 @@ import UIKit
 import QorumLogs
 
 extension String {
-    func ToMsgString() -> NSAttributedString {
+    func fitSize(_ size:CGSize,_ font:UIFont) -> CGSize {
+        //: 计算文本尺寸
+        return self.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName:font], context: nil).size
+    }
+    
+    func toMsgString() -> NSAttributedString {
         let attributeStr = NSMutableAttributedString(string: self)
-        let range = NSRange(location: 0, length: self.lengthOfBytes(using: .utf8))
+        let range = NSRange(location: 0, length: NSString(string: self).length)
         attributeStr.addAttribute(NSFontAttributeName, value: fontSize16, range: range)
         
         //: 正则表达式匹配字符串
