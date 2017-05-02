@@ -14,6 +14,7 @@ class VoiceChatCell: BaseChatCell {
     var viewModel:VoiceChatCellViewModel?{
         didSet{
             
+            super.baseViewModel = viewModel
         }
     }
 //MARK: 懒加载

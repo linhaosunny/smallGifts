@@ -101,7 +101,7 @@ class BannerCarouselView: UICollectionView {
         let current = indexPathsForVisibleItems.last
         var item = current!.item + 1
         
-        if current!.item + 1 > numberOfPage * pageLoopCount / 2 + pageLoopCount * (numberOfPage - 1) {
+        if current!.item + 1 > numberOfPage * pageLoopCount / 2 + pageLoopCount * (numberOfPage - 1)/2 {
             item = numberOfPage * pageLoopCount / 2
         }
         scrollToItem(at: IndexPath(item: item, section: 0) , at:.left, animated: true)

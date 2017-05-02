@@ -14,8 +14,10 @@ class PositionChatCell: BaseChatCell {
     var viewModel:PositionChatCellViewModel? {
         didSet{
             
+            super.baseViewModel = viewModel
         }
     }
+    
 //MARK: 懒加载
     
 //MARK: 构造方法

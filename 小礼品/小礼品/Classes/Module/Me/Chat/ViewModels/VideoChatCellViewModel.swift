@@ -9,10 +9,8 @@
 import UIKit
 
 class VideoChatCellViewModel: BaseChatCellViewModel {
-    private var msg:VideoMessage?
     
     init(withVideoMessage msg: VideoMessage) {
-        self.msg = msg
         super.init(withMsgModel: msg as MessageModel)
         
     }

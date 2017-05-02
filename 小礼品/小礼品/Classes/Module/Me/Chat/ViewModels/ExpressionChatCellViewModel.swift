@@ -9,11 +9,10 @@
 import UIKit
 
 class ExpressionChatCellViewModel: BaseChatCellViewModel {
-    private var msg:ExpressionMessage?
+
     var emojiSize:CGSize = .zero
     
     init(withExpressionMessage msg: ExpressionMessage) {
-        self.msg = msg
         super.init(withMsgModel: msg as MessageModel)
         
     }

@@ -13,9 +13,17 @@ import SDWebImage
 
 class BaseChatCell: UITableViewCell {
     
+    //: CellID
+    var id:String?
+    //: 视图类型
+    var type:MessageType?
     
     var baseViewModel:BaseChatCellViewModel?{
         didSet{
+            
+            id = baseViewModel!.id
+            type = baseViewModel!.type
+            
             timeLabel.text = baseViewModel!.timeLabelText
             
             if let image = baseViewModel!.avatarImage {

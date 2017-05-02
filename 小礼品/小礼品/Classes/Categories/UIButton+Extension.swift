@@ -47,24 +47,5 @@ extension UIButton {
         addTarget(cancelTarget, action: action, for: UIControlEvents.touchUpInside)
     }
     
-    //: 选礼神器-筛选标签按钮
-    convenience init(srotTagTarget: AnyObject?, action: Selector) {
-        self.init()
 
-        setBackgroundImage(UIImage.image(withColor: UIColor.white, withSize: CGSize(width: 1, height: 1)), for: UIControlState.normal)
-        setBackgroundImage(UIImage.image(withColor: UIColor(red: 251.0/255.0, green: 45.0/255.0, blue: 71.0/255.0, alpha: 1.0), withSize: CGSize(width:1,height: 1)), for: UIControlState.selected)
-        
-        setBackgroundImage(UIImage.image(withColor: UIColor.red, withSize: CGSize(width:1,height:1)), for: UIControlState.highlighted)
-        
-        setTitleColor(UIColor (red: 102.0/255.0, green: 102.0/255.0, blue: 102.0/255.0, alpha: 1.0), for: UIControlState.normal)
-        
-        setTitleColor(UIColor.white, for: UIControlState.selected)
-        setTitleColor(UIColor.white, for: UIControlState.highlighted)
-        titleLabel?.font = UIFont.systemFont(ofSize: 14.0)
-        layer.masksToBounds = true
-        layer.cornerRadius = 5.0
-        layer.borderColor = UIColor (red: 223.0/255.0, green: 223.0/255.0, blue: 223.0/255.0, alpha: 1.0).cgColor
-        layer.borderWidth = 0.5
-        addTarget(srotTagTarget, action: action, for: UIControlEvents.touchUpInside)
-    }
 }

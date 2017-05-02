@@ -14,6 +14,7 @@ class ExpressionChatCell: BaseChatCell {
     var viewModel:ExpressionChatCellViewModel?{
         didSet{
             
+            super.baseViewModel = viewModel
         }
     }
     

@@ -12,7 +12,6 @@ import QorumLogs
 fileprivate let maxMessageWidth:CGFloat = ScreenWidth * 0.6
 
 class TextChatCellViewModel: BaseChatCellViewModel {
-    private var msg:TextMessage?
     
     //: 富文本字体
     var msgAttributedText:NSAttributedString?
@@ -25,7 +24,6 @@ class TextChatCellViewModel: BaseChatCellViewModel {
     
 
     init(withTextMessage msg:TextMessage){
-        self.msg = msg
         super.init(withMsgModel: msg as MessageModel)
         
         msgAttributedText = msg.attrText
@@ -46,7 +44,7 @@ class TextChatCellViewModel: BaseChatCellViewModel {
         }
 
         size.height += margin*0.5
-//        size.width  += margin*0.5
+        size.width  += margin*0.5
         viewFrame.contentSize = size
         viewFrame.height += viewFrame.contentSize.height 
     }

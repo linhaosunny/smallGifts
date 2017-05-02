@@ -9,10 +9,8 @@
 import UIKit
 
 class VoiceChatCellViewModel: BaseChatCellViewModel {
-    private var msg:VoiceMessage?
     
     init(withVoiceMessage msg: VoiceMessage) {
-        self.msg = msg
         super.init(withMsgModel: msg as MessageModel)
         
         

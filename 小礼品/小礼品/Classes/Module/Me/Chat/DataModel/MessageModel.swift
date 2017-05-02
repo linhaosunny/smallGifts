@@ -119,5 +119,8 @@ class MessageModel: NSObject {
     }
     
 //MARK: 外部接口
- 
+    //: 判断是否为同一个模型
+    func isEqualModel(_ model: MessageModel) -> Bool {
+        return id == model.id ? true : false
+    }
 }

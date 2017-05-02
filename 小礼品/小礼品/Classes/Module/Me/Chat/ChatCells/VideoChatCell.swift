@@ -13,6 +13,7 @@ class VideoChatCell: BaseChatCell {
     var viewModel:VideoChatCellViewModel? {
         didSet{
             
+            super.baseViewModel = viewModel
         }
     }
 //MARK: 懒加载

@@ -22,4 +22,14 @@ class TextMessage: MessageModel {
         super.init()
         type = .text
     }
+    
+    //: 用户消息
+    class func userMessage(text:String) -> TextMessage {
+        let msg = TextMessage()
+        msg.text = text
+        msg.owner = .user
+        msg.source = .myself
+        
+        return msg
+    }
 }

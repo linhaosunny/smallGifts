@@ -170,3 +170,8 @@ extension AppDelegate {
     }
 }
 
+extension AppDelegate {
+    func applicationDidBecomeActive(_ application: UIApplication) {
+     
+    }
+}

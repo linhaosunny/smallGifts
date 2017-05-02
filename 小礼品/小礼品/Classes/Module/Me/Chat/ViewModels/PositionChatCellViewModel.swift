@@ -9,10 +9,8 @@
 import UIKit
 
 class PositionChatCellViewModel: BaseChatCellViewModel {
-    private var msg:PositionMessage?
     
     init(withPositionMessage msg: PositionMessage) {
-        self.msg = msg
         super.init(withMsgModel: msg as MessageModel)
         
         

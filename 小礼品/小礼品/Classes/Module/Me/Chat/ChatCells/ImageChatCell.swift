@@ -12,7 +12,7 @@ class ImageChatCell: BaseChatCell {
 //MARK: 属性
     var viewModel:ImageChatCellViewModel? {
         didSet {
-            
+            super.baseViewModel = viewModel
         }
     }
 //MARK: 懒加载

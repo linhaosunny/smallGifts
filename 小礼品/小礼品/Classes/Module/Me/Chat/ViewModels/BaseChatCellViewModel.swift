@@ -21,8 +21,6 @@ public enum layoutLocation : Int {
 }
 
 class BaseChatCellViewModel: NSObject {
-    private var msg:MessageModel?
-    
     //: 视图类型
     var type:MessageType?
     //: 视图模型大小
@@ -42,10 +40,6 @@ class BaseChatCellViewModel: NSObject {
     var avatarWidth:CGFloat = AvatarWidth
     
     init(withMsgModel msg:MessageModel) {
-        self.msg = msg
-        
-        type = msg.type
-        id   = msg.id
         
         if let text = msg.date?.ToStringInfo() {
             timeLabelText = String(format: "  %@  ", text)
@@ -109,4 +103,5 @@ class BaseChatCellViewModel: NSObject {
             return nil
         }
     }
+    
 }

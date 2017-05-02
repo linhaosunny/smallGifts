@@ -20,7 +20,9 @@ let defaultIdentifier  = "BaseChatCell"
 class ChatBoardView: UITableView {
 
 //: 属性
-    var viewModel:ChatBoardViewModel = ChatBoardViewModel()
+    weak var boardDelegate:ChatBoardViewDelegate?
+    
+    var dataModel:ChatBoardDataModel = ChatBoardDataModel()
 //: 构造方法
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
@@ -40,6 +42,11 @@ class ChatBoardView: UITableView {
         
         //: 注册Cell
         registerChatCells()
+        
+        //: 添加手势
+        let tap = UITapGestureRecognizer(target: self, action: #selector(chatBoardDidTap))
+        
+        addGestureRecognizer(tap)
     }
     
     private func setupChatBoardStyle() {
@@ -53,6 +60,7 @@ class ChatBoardView: UITableView {
     }
     
     private func registerChatCells() {
+        
         register(TextChatCell.self, forCellReuseIdentifier: textMsgIdentifier)
         register(ImageChatCell.self, forCellReuseIdentifier: imageMsgIdentifier)
         register(ExpressionChatCell.self, forCellReuseIdentifier: expressionMsgIdentifier)
@@ -60,17 +68,23 @@ class ChatBoardView: UITableView {
         register(VideoChatCell.self, forCellReuseIdentifier: videoMsgIdentifier)
         register(PositionChatCell.self, forCellReuseIdentifier: positionMsgIdentifier)
         register(BaseChatCell.self, forCellReuseIdentifier: defaultIdentifier)
+        
+    }
+//MARK: 内部处理
+    @objc private func chatBoardDidTap() {
+        boardDelegate?.chatboardViewDidTap()
     }
 //MARK: 开放接口
-    func addViewModel(cellModel model:BaseChatCellViewModel) {
-        //: 添加视图模型
-        viewModel.cellViewModels.add(model)
-        
+    func addMsgModel(MessageModel model:MessageModel) {
+        //: 添加消息模型
+        dataModel.msgModels.add(model)
+        let height = dataModel.viewHeight(msg: model)
+        dataModel.heights.add(height)
         //: 更新数据
         reloadData()
         
         //: 界面调整
-        let indexPath = IndexPath(row: viewModel.cellViewModels.count - 1, section: 0)
+        let indexPath = IndexPath(row: dataModel.msgModels.count - 1, section: 0)
         
         scrollToRow(at: indexPath, at: .bottom, animated: true)
     }
@@ -79,10 +93,10 @@ class ChatBoardView: UITableView {
      
     }
     
-    func deleteViewModel(cellModel model:BaseChatCellViewModel,withAnimation animation:Bool) {
+    func deleteMsgModel(MessageModel model:MessageModel,withAnimation animation:Bool) {
         
         
-        viewModel.indexForCellModel(model) { (index, result) in
+        dataModel.indexForMsgModel(model) { (index, result) in
             
             //: 如果数据匹配删除
             if result {
@@ -90,42 +104,45 @@ class ChatBoardView: UITableView {
                 self.deleteRows(at: [IndexPath(row: index, section: 0)], with: animation ? .automatic: .none)
                 
                 //: 移除数据源
-                self.viewModel.cellViewModels.remove(model)
+                self.dataModel.msgModels.remove(model)
             }
         }
         
-        
+    }
+    
+    func scrollChatBoard(keyboardY offsetY:CGFloat,chatBarHeight height:CGFloat, _ animation:Bool) {
+        if ScreenHeight > offsetY {
+            setContentOffset(CGPoint(x: 0, y:contentSize.height - (ScreenHeight - offsetY) + height), animated: animation)
+        }
+        else {
+            setContentOffset(CGPoint(x: 0, y:contentSize.height - ScreenHeight + height), animated: animation)
+        }
     }
 }
 
 //MARK: 代理方法 -> UITableViewDelegate
 extension ChatBoardView:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.cellViewModels.count
+        return dataModel.msgModels.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-     
-        let cellModel = viewModel.cellViewModels[indexPath.row] as! BaseChatCellViewModel
         
-        return cellModel.viewFrame.height 
+        return dataModel.heights[indexPath.row] as! CGFloat
     }
     
     //: 设置cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellModel = viewModel.cellViewModels[indexPath.row] as! BaseChatCellViewModel
+        let msg = dataModel.msgModels[indexPath.row] as! MessageModel
         
-        switch cellModel.type! {
+        switch msg.type {
         //: 文字消息
         case .text:
             
             let cell = tableView.dequeueReusableCell(withIdentifier: textMsgIdentifier) as! TextChatCell
             //: 如果ID一致无需更新
-            if (cell.viewModel != nil && cellModel.id == cell.viewModel!.id) {
-                return cell
-            }
             
-            cell.viewModel = cellModel as? TextChatCellViewModel
+            cell.viewModel = TextChatCellViewModel(withTextMessage: msg as! TextMessage)
             
             return cell
         //: 图片消息
@@ -133,37 +150,37 @@ extension ChatBoardView:UITableViewDelegate,UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: imageMsgIdentifier) as! ImageChatCell
             
             
-            cell.viewModel = cellModel as? ImageChatCellViewModel
+            cell.viewModel = ImageChatCellViewModel(withImageMessage: msg as! ImageMessage )
             
             return cell
         //: 语音消息
         case .voice:
             let cell = tableView.dequeueReusableCell(withIdentifier: voiceMsgIdentifier) as! VoiceChatCell
-            cell.viewModel = cellModel as? VoiceChatCellViewModel
+            cell.viewModel = VoiceChatCellViewModel(withVoiceMessage: msg as! VoiceMessage)
             
             return cell
         //: 表情
         case .Expression:
             let cell = tableView.dequeueReusableCell(withIdentifier: expressionMsgIdentifier) as! ExpressionChatCell
-            cell.viewModel = cellModel as? ExpressionChatCellViewModel
+            cell.viewModel = ExpressionChatCellViewModel(withExpressionMessage: msg as! ExpressionMessage)
             
             return cell
         //: 视频
         case .video:
             let cell = tableView.dequeueReusableCell(withIdentifier: videoMsgIdentifier) as! VideoChatCell
-            cell.viewModel = cellModel as? VideoChatCellViewModel
+            cell.viewModel = VideoChatCellViewModel(withVideoMessage: msg as! VideoMessage)
             
             return cell
         //: 地理位置
         case .postion:
             let cell = tableView.dequeueReusableCell(withIdentifier: positionMsgIdentifier) as! PositionChatCell
-            cell.viewModel = cellModel as? PositionChatCellViewModel
+            cell.viewModel = PositionChatCellViewModel(withPositionMessage: msg as! PositionMessage)
             
             return cell
         //: 默认
         default:
              let cell = tableView.dequeueReusableCell(withIdentifier: defaultIdentifier, for: indexPath) as? BaseChatCell
-             cell!.baseViewModel = cellModel
+             cell!.baseViewModel = BaseChatCellViewModel(withMsgModel: msg)
             
              return cell!
         }
@@ -181,3 +198,9 @@ extension ChatBoardView:ChatViewControllerDelegate {
         
     }
 }
+
+//MARK: 协议
+protocol ChatBoardViewDelegate:NSObjectProtocol {
+    func chatboardViewDidTap()
+}
+

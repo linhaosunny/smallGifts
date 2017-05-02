@@ -9,12 +9,11 @@
 import UIKit
 
 class ImageChatCellViewModel: BaseChatCellViewModel {
-    private var msg:ImageMessage?
+
     var imageSize:CGSize = .zero
     
-    init(withImageMessage msg:ImageMessage){
-        self.msg = msg
-        super.init(withMsgModel: msg as MessageModel)
-        
+//MARK: 构造方法
+    init(withImageMessage msg: ImageMessage) {
+        super.init(withMsgModel: msg)
     }
 }

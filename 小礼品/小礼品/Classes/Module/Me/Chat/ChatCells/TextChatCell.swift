@@ -14,7 +14,7 @@ class TextChatCell: BaseChatCell {
     var viewModel: TextChatCellViewModel? {
         didSet{
             
-            super.baseViewModel = viewModel! as BaseChatCellViewModel
+            super.baseViewModel = viewModel
             
             //: 设置内容
             msgLabel.attributedText = viewModel!.msgAttributedText
