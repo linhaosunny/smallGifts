@@ -271,22 +271,19 @@ class ChatBar: UIView {
 extension ChatBar:RecordButtonDelegate {
 //MARK: 录音相关
     func recordButtonTouchedBegin() {
-        
+        delegate?.chatBarStartRecording()
     }
     
     func recordButtonTouchedMoved(_ isMovingIn: Bool) {
-        
-        
+        delegate?.chatBarWillCancelRecording(cancel: isMovingIn)
     }
     
     func recordButtonTouchedEnd() {
-        
-        
+        delegate?.chatBarFinshedRecording()
     }
     
     func recordButtonTouchedCancel() {
-        
-        
+        delegate?.chatBarDidCancelRecording()
     }
 }
 
@@ -386,4 +383,8 @@ extension ChatBar:UITextViewDelegate {
 //MARK: 协议
 protocol ChatBarDelegate:NSObjectProtocol {
     func chatBarSendText(text:String)
+    func chatBarStartRecording()
+    func chatBarWillCancelRecording(cancel:Bool)
+    func chatBarFinshedRecording()
+    func chatBarDidCancelRecording()
 }

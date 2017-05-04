@@ -22,6 +22,7 @@ class ChatBoardView: UITableView {
 //: 属性
     weak var boardDelegate:ChatBoardViewDelegate?
     
+    var viewModel:ChatBoardViewModel = ChatBoardViewModel()
     var dataModel:ChatBoardDataModel = ChatBoardDataModel()
 //: 构造方法
     override init(frame: CGRect, style: UITableViewStyle) {
@@ -80,17 +81,49 @@ class ChatBoardView: UITableView {
         dataModel.msgModels.add(model)
         let height = dataModel.viewHeight(msg: model)
         dataModel.heights.add(height)
+        viewModel.dataModel = dataModel
         //: 更新数据
         reloadData()
         
         //: 界面调整
-        let indexPath = IndexPath(row: dataModel.msgModels.count - 1, section: 0)
-        
-        scrollToRow(at: indexPath, at: .bottom, animated: true)
+        scrollToChatBoardEnd()
     }
     
-    func updateViewModel(cellModel model:BaseChatCellViewModel){
-     
+    func updateMsgModel(MessageModel model:MessageModel){
+        //: 查找cell
+        for i in 0..<visibleCells.count {
+            
+            if visibleCells[i].isKind(of:BaseChatCell.self) {
+                let cell = visibleCells[i] as! BaseChatCell
+                if cell.type == model.type &&
+                    cell.id == model.id   {
+                    QL2("更新cell")
+                    //: 更新界面
+                    updateCell(cellView: cell, msg: model)
+                    
+                    //: 跟新数据源
+                    dataModel.indexForMsgModel(model, finshed: { (index, result) in
+                        if result {
+                            self.dataModel.msgModels.replaceObject(at: index, with: model)
+                        }
+                    })
+                    
+                }
+                
+            }
+        }
+    }
+    
+    func updateCell(cellView:BaseChatCell, msg:MessageModel){
+        switch cellView.type! {
+        case .voice:
+            let cell = cellView as! VoiceChatCell
+            cell.viewModel = VoiceChatCellViewModel(withVoiceMessage: msg as! VoiceMessage)
+        default:
+            let cell = cellView
+            cell.baseViewModel = BaseChatCellViewModel(withMsgModel: msg)
+        }
+        
     }
     
     func deleteMsgModel(MessageModel model:MessageModel,withAnimation animation:Bool) {
@@ -100,19 +133,26 @@ class ChatBoardView: UITableView {
             
             //: 如果数据匹配删除
             if result {
-                //: 更新界面
-                self.deleteRows(at: [IndexPath(row: index, section: 0)], with: animation ? .automatic: .none)
-                
+
                 //: 移除数据源
                 self.dataModel.msgModels.remove(model)
+                self.viewModel.dataModel = self.dataModel
+                //: 界面调整
+                self.scrollToChatBoardEnd()
             }
         }
         
     }
     
+    func scrollToChatBoardEnd() {
+        let indexPath = IndexPath(row: self.dataModel.msgModels.count - 1, section: 0)
+        
+        scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
+    
     func scrollChatBoard(keyboardY offsetY:CGFloat,chatBarHeight height:CGFloat, _ animation:Bool) {
         if ScreenHeight > offsetY {
-            setContentOffset(CGPoint(x: 0, y:contentSize.height - (ScreenHeight - offsetY) + height), animated: animation)
+            setContentOffset(CGPoint(x: 0, y:contentSize.height - (ScreenHeight + offsetY - ScreenHeight) + height), animated: animation)
         }
         else {
             setContentOffset(CGPoint(x: 0, y:contentSize.height - ScreenHeight + height), animated: animation)
@@ -157,7 +197,7 @@ extension ChatBoardView:UITableViewDelegate,UITableViewDataSource {
         case .voice:
             let cell = tableView.dequeueReusableCell(withIdentifier: voiceMsgIdentifier) as! VoiceChatCell
             cell.viewModel = VoiceChatCellViewModel(withVoiceMessage: msg as! VoiceMessage)
-            
+            cell.delegate = self.viewModel
             return cell
         //: 表情
         case .Expression:

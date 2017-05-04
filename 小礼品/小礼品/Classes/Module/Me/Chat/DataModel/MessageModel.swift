@@ -7,6 +7,8 @@
 //  IM 消息基本模型定义
 
 import UIKit
+import QorumLogs
+
 //MARK: 消息所有者
 public enum MessageOwner : Int {
     
@@ -112,15 +114,15 @@ class MessageModel: NSObject {
 //MARK: 构造方法
     override init() {
         super.init()
-        
+    
         //: 初始化消息id 
-        id = String(format: "%lld", Date().timeIntervalSince1970 * 1000)
+        id = String(format: "%lld", UInt(Date().timeIntervalSince1970 * 1000))
 
     }
     
 //MARK: 外部接口
     //: 判断是否为同一个模型
     func isEqualModel(_ model: MessageModel) -> Bool {
-        return id == model.id ? true : false
+        return ((type == model.type) && (id == model.id)) ? true : false
     }
 }

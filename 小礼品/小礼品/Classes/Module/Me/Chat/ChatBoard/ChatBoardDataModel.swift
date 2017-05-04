@@ -37,14 +37,14 @@ class ChatBoardDataModel: NSObject {
     }
     
     //: 通过ID查找模块
-    func indexForMsgModel(withID id:String,finshed:@escaping (_ index:Int,_ isFind:Bool) ->()){
+    func indexForMsgModel(withID id:String,withType type:MessageType,finshed:@escaping (_ index:Int,_ isFind:Bool) ->()){
         
         var hasObject:Bool = false
         var index = 0
         
         for i in 0..<msgModels.count {
             let msgModel = msgModels[i] as! MessageModel
-            if msgModel.id == id {
+            if type == msgModel.type && msgModel.id == id {
                 hasObject = true
                 index = i
             }

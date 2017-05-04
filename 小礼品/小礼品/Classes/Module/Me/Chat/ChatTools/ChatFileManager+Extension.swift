@@ -11,7 +11,7 @@ import QorumLogs
 
 extension FileManager {
     class func userAvatarPath(avatarName name:String) -> String {
-        let path = "\(FileManager.documents())/User/\(AccountModel.shareAccount()!.uid)/Chat/Avatar/"
+        let path = "\(FileManager.documents())/User/\(AccountModel.shareAccount()!.uid!)/Chat/Avatar/"
         if !FileManager.default.fileExists(atPath: path) {
             do{
                try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
@@ -24,6 +24,19 @@ extension FileManager {
         return path.appending(name)
     }
     
+    class func userChatVoicePath(voiceName name:String) -> String {
+        let path = "\(FileManager.documents())/User/\(AccountModel.shareAccount()!.uid!)/Chat/Voice/"
+        if !FileManager.default.fileExists(atPath: path) {
+            do{
+                try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
+            }
+            catch{
+                QL4("File Create Failed: %@", path)
+            }
+        }
+        
+        return path.appending(name)
+    }
     
     class func expressionPath(groupID id:String) -> String {
         let path = "\(FileManager.documents())/Expression/\(id)/"

@@ -106,6 +106,11 @@
 		852360301EB6C937006FAF19 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523602C1EB6C937006FAF19 /* Emoji.swift */; };
 		852360311EB6C937006FAF19 /* ChatEmojiGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523602E1EB6C937006FAF19 /* ChatEmojiGroup.swift */; };
 		852360321EB6C937006FAF19 /* ChatExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523602F1EB6C937006FAF19 /* ChatExpression.swift */; };
+		852360341EB84BC5006FAF19 /* VoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852360331EB84BC5006FAF19 /* VoiceView.swift */; };
+		852360361EB86003006FAF19 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852360351EB86003006FAF19 /* AudioPlayer.swift */; };
+		852360381EB869FC006FAF19 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852360371EB869FC006FAF19 /* AudioRecorder.swift */; };
+		8523603A1EB8CD91006FAF19 /* RecordVoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852360391EB8CD91006FAF19 /* RecordVoiceView.swift */; };
+		8523603C1EB9E707006FAF19 /* ChatBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8523603B1EB9E707006FAF19 /* ChatBoardViewModel.swift */; };
 		852E2B511EB0C0320065F5D0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 852E2B501EB0C0320065F5D0 /* SystemConfiguration.framework */; };
 		852E2B531EB0C0410065F5D0 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 852E2B521EB0C0410065F5D0 /* CoreTelephony.framework */; };
 		852E2B551EB0C0520065F5D0 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 852E2B541EB0C0520065F5D0 /* AdSupport.framework */; };
@@ -161,6 +166,8 @@
 		857A3A411EB3F906000A26DB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A3A401EB3F906000A26DB /* UIView+Extension.swift */; };
 		857A3A431EB40067000A26DB /* NSAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A3A421EB40067000A26DB /* NSAttributedString+Extension.swift */; };
 		857A3A471EB4AA98000A26DB /* ChatBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857A3A461EB4AA98000A26DB /* ChatBar.swift */; };
+		85AD89041EBA1BCC006C6F05 /* 贝加尔湖畔.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85AD89031EBA1BCC006C6F05 /* 贝加尔湖畔.mp3 */; };
+		85AD89061EBA1EB8006C6F05 /* 唐古 - 你懂不懂爱.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 85AD89051EBA1EB8006C6F05 /* 唐古 - 你懂不懂爱.mp3 */; };
 		85D89E3C1EAA68560010B93D /* banner-01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 85D89E371EAA68560010B93D /* banner-01.jpg */; };
 		85D89E3D1EAA68560010B93D /* banner-02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 85D89E381EAA68560010B93D /* banner-02.jpg */; };
 		85D89E3E1EAA68560010B93D /* banner-03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 85D89E391EAA68560010B93D /* banner-03.jpg */; };
@@ -341,6 +348,11 @@
 		8523602C1EB6C937006FAF19 /* Emoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		8523602E1EB6C937006FAF19 /* ChatEmojiGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatEmojiGroup.swift; sourceTree = "<group>"; };
 		8523602F1EB6C937006FAF19 /* ChatExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatExpression.swift; sourceTree = "<group>"; };
+		852360331EB84BC5006FAF19 /* VoiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceView.swift; sourceTree = "<group>"; };
+		852360351EB86003006FAF19 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		852360371EB869FC006FAF19 /* AudioRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+		852360391EB8CD91006FAF19 /* RecordVoiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVoiceView.swift; sourceTree = "<group>"; };
+		8523603B1EB9E707006FAF19 /* ChatBoardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatBoardViewModel.swift; sourceTree = "<group>"; };
 		852E2B501EB0C0320065F5D0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		852E2B521EB0C0410065F5D0 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		852E2B541EB0C0520065F5D0 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -396,6 +408,9 @@
 		857A3A401EB3F906000A26DB /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		857A3A421EB40067000A26DB /* NSAttributedString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extension.swift"; sourceTree = "<group>"; };
 		857A3A461EB4AA98000A26DB /* ChatBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatBar.swift; sourceTree = "<group>"; };
+		85AD89031EBA1BCC006C6F05 /* 贝加尔湖畔.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "贝加尔湖畔.mp3"; sourceTree = "<group>"; };
+		85AD89051EBA1EB8006C6F05 /* 唐古 - 你懂不懂爱.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "唐古 - 你懂不懂爱.mp3"; sourceTree = "<group>"; };
+		85AD89091EBA3836006C6F05 /* 小礼品.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "小礼品.entitlements"; sourceTree = "<group>"; };
 		85D89E371EAA68560010B93D /* banner-01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "banner-01.jpg"; sourceTree = "<group>"; };
 		85D89E381EAA68560010B93D /* banner-02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "banner-02.jpg"; sourceTree = "<group>"; };
 		85D89E391EAA68560010B93D /* banner-03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "banner-03.jpg"; sourceTree = "<group>"; };
@@ -551,6 +566,8 @@
 			isa = PBXGroup;
 			children = (
 				850843F81EAF9031001BEEF4 /* NetworkTools.swift */,
+				852360351EB86003006FAF19 /* AudioPlayer.swift */,
+				852360371EB869FC006FAF19 /* AudioRecorder.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -897,6 +914,7 @@
 			children = (
 				852E2B5A1EB1531F0065F5D0 /* ChatBoardView.swift */,
 				857A3A2A1EB38A8E000A26DB /* ChatBoardDataModel.swift */,
+				8523603B1EB9E707006FAF19 /* ChatBoardViewModel.swift */,
 			);
 			path = ChatBoard;
 			sourceTree = "<group>";
@@ -911,6 +929,7 @@
 				857A3A301EB390D0000A26DB /* VideoChatCell.swift */,
 				857A3A321EB390E2000A26DB /* ExpressionChatCell.swift */,
 				857A3A341EB39421000A26DB /* PositionChatCell.swift */,
+				852360331EB84BC5006FAF19 /* VoiceView.swift */,
 			);
 			path = ChatCells;
 			sourceTree = "<group>";
@@ -1000,8 +1019,18 @@
 				857A3A461EB4AA98000A26DB /* ChatBar.swift */,
 				852360231EB4C4B9006FAF19 /* ChatBarViewModel.swift */,
 				852360251EB4D255006FAF19 /* RecordButton.swift */,
+				852360391EB8CD91006FAF19 /* RecordVoiceView.swift */,
 			);
 			path = ChatBar;
+			sourceTree = "<group>";
+		};
+		85AD89001EBA1ACA006C6F05 /* mp3 */ = {
+			isa = PBXGroup;
+			children = (
+				85AD89051EBA1EB8006C6F05 /* 唐古 - 你懂不懂爱.mp3 */,
+				85AD89031EBA1BCC006C6F05 /* 贝加尔湖畔.mp3 */,
+			);
+			path = mp3;
 			sourceTree = "<group>";
 		};
 		85D89E361EAA68560010B93D /* Banner */ = {
@@ -1075,6 +1104,7 @@
 		85E388E51EA12760008BA044 /* 小礼品 */ = {
 			isa = PBXGroup;
 			children = (
+				85AD89091EBA3836006C6F05 /* 小礼品.entitlements */,
 				850843CE1EAF459C001BEEF4 /* Application */,
 				85E389531EA64A34008BA044 /* Source */,
 				85E389181EA13B88008BA044 /* Classes */,
@@ -1117,6 +1147,7 @@
 		85E389531EA64A34008BA044 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				85AD89001EBA1ACA006C6F05 /* mp3 */,
 				85D89E541EAA729E0010B93D /* gifts */,
 				85D89E361EAA68560010B93D /* Banner */,
 				8558AA811EA8F99500B59A49 /* goods */,
@@ -1242,6 +1273,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = H2H2868WN7;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+						};
 					};
 					85E388F61EA12761008BA044 = {
 						CreatedOnToolsVersion = 8.1;
@@ -1301,6 +1337,7 @@
 				85D89E7D1EAA729F0010B93D /* gifts_15.jpg in Resources */,
 				85D89E781EAA729F0010B93D /* gifts_10.jpg in Resources */,
 				85D89E871EAA729F0010B93D /* gifts_25.jpg in Resources */,
+				85AD89041EBA1BCC006C6F05 /* 贝加尔湖畔.mp3 in Resources */,
 				8558AA8E1EA8F99500B59A49 /* goods_2.jpg in Resources */,
 				85D89E6F1EAA729E0010B93D /* gifts_1.jpg in Resources */,
 				85E388EE1EA12760008BA044 /* Assets.xcassets in Resources */,
@@ -1312,6 +1349,7 @@
 				85D89E7E1EAA729F0010B93D /* gifts_16.jpg in Resources */,
 				85D89E3F1EAA68560010B93D /* banner-04.jpg in Resources */,
 				85E389721EA64A5A008BA044 /* strategy_5.jpg in Resources */,
+				85AD89061EBA1EB8006C6F05 /* 唐古 - 你懂不懂爱.mp3 in Resources */,
 				8558AA931EA8F99500B59A49 /* goods_7.jpg in Resources */,
 				85D89E861EAA729F0010B93D /* gifts_24.jpg in Resources */,
 				85D89E881EAA729F0010B93D /* gifts_26.jpg in Resources */,
@@ -1521,6 +1559,7 @@
 				857A3A2F1EB390B9000A26DB /* VoiceChatCell.swift in Sources */,
 				850844721EAF91DE001BEEF4 /* ProgressHUD.swift in Sources */,
 				8561602C1EAFD73B00E63050 /* SettingFooterView.swift in Sources */,
+				8523603C1EB9E707006FAF19 /* ChatBoardViewModel.swift in Sources */,
 				850844711EAF91DE001BEEF4 /* PopoverSortView.swift in Sources */,
 				852E2B701EB1B84D0065F5D0 /* TextChatCellViewModel.swift in Sources */,
 				8508449D1EAF91DE001BEEF4 /* MainViewController.swift in Sources */,
@@ -1539,6 +1578,7 @@
 				85463C1D1EB2783600E2BB40 /* ImageMessage.swift in Sources */,
 				8561602E1EAFE5CB00E63050 /* MeFooterViewModel.swift in Sources */,
 				8508447C1EAF91DE001BEEF4 /* SearchHeaderView.swift in Sources */,
+				852360341EB84BC5006FAF19 /* VoiceView.swift in Sources */,
 				85463C211EB27B9A00E2BB40 /* ImageChatCellViewModel.swift in Sources */,
 				857A3A311EB390D0000A26DB /* VideoChatCell.swift in Sources */,
 				850844971EAF91DE001BEEF4 /* StrategyColumnViewCell.swift in Sources */,
@@ -1596,6 +1636,7 @@
 				852E2B731EB1FF980065F5D0 /* ChatFileManager+Extension.swift in Sources */,
 				8508447A1EAF91DE001BEEF4 /* SearchBar.swift in Sources */,
 				850843F41EAF8FD8001BEEF4 /* UIImage+Extension.swift in Sources */,
+				852360361EB86003006FAF19 /* AudioPlayer.swift in Sources */,
 				852360261EB4D255006FAF19 /* RecordButton.swift in Sources */,
 				8508448D1EAF91DE001BEEF4 /* SingleGiftCell.swift in Sources */,
 				850844601EAF91DE001BEEF4 /* BannerCarouselView.swift in Sources */,
@@ -1608,6 +1649,7 @@
 				850843D01EAF45E5001BEEF4 /* AppDelegate.swift in Sources */,
 				8508449C1EAF91DE001BEEF4 /* HotViewController.swift in Sources */,
 				850844941EAF91DE001BEEF4 /* StrategyClassifyViewCellViewModel.swift in Sources */,
+				8523603A1EB8CD91006FAF19 /* RecordVoiceView.swift in Sources */,
 				8508449A1EAF91DE001BEEF4 /* HomeViewController.swift in Sources */,
 				850844751EAF91DE001BEEF4 /* Refresh.swift in Sources */,
 				850844651EAF91DE001BEEF4 /* BaseClassifyViewModel.swift in Sources */,
@@ -1637,6 +1679,7 @@
 				852E2B751EB1FFC40065F5D0 /* ChatString+Extension.swift in Sources */,
 				850844611EAF91DE001BEEF4 /* BannerCarouselViewCell.swift in Sources */,
 				852E2B581EB1468C0065F5D0 /* ChatViewController.swift in Sources */,
+				852360381EB869FC006FAF19 /* AudioRecorder.swift in Sources */,
 				850843F11EAF8FD8001BEEF4 /* String+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -41,6 +41,9 @@ class BaseChatCellViewModel: NSObject {
     
     init(withMsgModel msg:MessageModel) {
         
+        id = msg.id
+        type = msg.type
+        
         if let text = msg.date?.ToStringInfo() {
             timeLabelText = String(format: "  %@  ", text)
             timeLabelFont = TimeLabelFont

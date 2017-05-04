@@ -39,5 +39,16 @@ class VoiceMessage: MessageModel {
         super.init()
         type = .voice
     }
+//MARK: 外部接口
+    //: 用户消息
+    class func userMessage(status:RecordStatus) -> VoiceMessage {
+        let msg = VoiceMessage()
+
+        msg.owner = .user
+        msg.source = .myself
+        msg.status = status
+        
+        return msg
+    }
     
 }

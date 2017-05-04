@@ -22,6 +22,7 @@ class BaseChatCell: UITableViewCell {
         didSet{
             
             id = baseViewModel!.id
+            
             type = baseViewModel!.type
             
             timeLabel.text = baseViewModel!.timeLabelText
