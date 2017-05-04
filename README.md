@@ -35,7 +35,7 @@
    ****
 
    - IM (客服)  
-    <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/im.gif" width="215" height="380" alt="图片2-1" />  
+    <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/im.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/record1.gif" width="215" height="380" alt="图片2-1" /> <img src="https://github.com/linhaosunny/smallGifts/blob/master/tu/record2.gif" width="215" height="380" alt="图片2-1" />   
    ****
   >
      
