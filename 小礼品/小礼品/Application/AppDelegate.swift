@@ -48,6 +48,8 @@ extension AppDelegate {
     fileprivate func setupRootViewController() {
         window = UIWindow(frame: UIScreen.main.bounds)
         
+        window?.backgroundColor = SystemGlobalBackgroundColor
+        
         window?.rootViewController = defaultRootViewController()
         
         window?.makeKeyAndVisible()

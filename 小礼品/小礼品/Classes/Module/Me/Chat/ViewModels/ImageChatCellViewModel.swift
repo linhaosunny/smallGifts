@@ -12,8 +12,17 @@ class ImageChatCellViewModel: BaseChatCellViewModel {
 
     var imageSize:CGSize = .zero
     
+    var imagePath:String?
+    
+    var imageUrl:String?
+    
 //MARK: 构造方法
     init(withImageMessage msg: ImageMessage) {
         super.init(withMsgModel: msg)
+        
+        imagePath = msg.imagePath
+        imageUrl = msg.imageUrl
+        
+        
     }
 }

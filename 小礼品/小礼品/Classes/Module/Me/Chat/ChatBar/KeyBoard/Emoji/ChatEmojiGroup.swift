@@ -4,7 +4,7 @@
 //
 //  Created by 李莎鑫 on 2017/4/27.
 //  Copyright © 2017年 李莎鑫. All rights reserved.
-//  表情组
+//  表情组基本数据结构
 
 import UIKit
 
@@ -20,7 +20,9 @@ public enum EmojiType : Int {
     
     case ImageTitle
     
-    case other
+    case Other
+    
+    case Delete
     
 }
 
@@ -42,11 +44,22 @@ class ChatBannerInfo: NSObject {
 
 class ChatEmojiGroup: NSObject {
 //MARK: 本地数据
-    var emojis:NSMutableArray? {
+    //: 表情数据
+    var emojis:Array<Any>? {
         didSet{
-            count = emojis!.count
-            pageItems = row * col
-            pages = count / pageItems + (count % pageItems == 0 ? 0 : 1)
+                count = emojis!.count
+                
+                if type == .Emoji || type == .Face {
+                    row = 3
+                    col = 7
+                }
+                else {
+                    row = 2
+                    col = 4
+                }
+                
+                pageItems = row * col
+                pages = count / pageItems + (count % pageItems == 0 ? 0 : 1)
         }
     }
 //MARK: 懒加载
@@ -105,10 +118,9 @@ class ChatEmojiGroup: NSObject {
     
     //: 列数
     var col:Int = 0
+
     
 //MARK: 构造方法
     
-    
-//MARK: 接口方法
-    
+
 }

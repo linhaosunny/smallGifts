@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QorumLogs
 
 let chatBarTextViewHeight:CGFloat      = 36.0
 let chatBarTextViewMaxHeight:CGFloat   = 112.0
@@ -39,7 +40,22 @@ class ChatBar: UIView {
     
     private var viewModelData:ChatBarViewModel =  ChatBarViewModel()
 //MARK: 懒加载
+    //: 表情管理工具
+    lazy var emojiManager:EmojiManager = EmojiManager.shared
+    //: 表情键盘
+    lazy var emojiKeyboard:EmojiKeyboard = { () -> EmojiKeyboard in
+       let keyboard = EmojiKeyboard.shared
+        keyboard.delegate = self
+        return keyboard
+    }()
     
+    //: 更多键盘
+    lazy var moreKeyboard:MoreKeyboard = { () -> MoreKeyboard in
+        let keyboard = MoreKeyboard.shared
+        
+        return keyboard
+    }()
+    //: 按钮
     lazy var voiceButton:UIButton = { () -> UIButton in
        let button = UIButton()
         button.tag = ChatBarButtonType.voice.rawValue
@@ -62,8 +78,8 @@ class ChatBar: UIView {
         return button
     }()
     
-    lazy var textView:UITextView = { () -> UITextView in
-        let text = UITextView()
+    lazy var textView:ChatBarTextView = { () -> ChatBarTextView in
+        let text = ChatBarTextView()
         
         text.font = fontSize15
         text.returnKeyType = .send
@@ -117,6 +133,7 @@ class ChatBar: UIView {
     
     private func chatBarResignFirstResponder() {
           textView.resignFirstResponder()
+          keyboardDissmiss()
           isResignResponder = true
     }
     
@@ -129,7 +146,11 @@ class ChatBar: UIView {
         addSubview(recordButton)
         addSubview(textView)
         
-    
+        //: 初始化表情管理工具
+        emojiManager.emojisGroup(byUserID: AccountModel.shareAccount()!.uid!) { [unowned self](array) in
+            self.emojiKeyboard.emojiView.data = array
+            self.emojiKeyboard.groupControl.group = array
+        }
     }
     
     private func setupChatBarSubView() {
@@ -221,7 +242,7 @@ class ChatBar: UIView {
         
         if button.isSelected {
             //: 取消第一响应
-            textView.resignFirstResponder()
+            chatBarResignFirstResponder()
             changeButtonImage(button: button,type: .text)
             textView.isHidden = true
             recordButton.isHidden = false
@@ -230,18 +251,22 @@ class ChatBar: UIView {
             changeButtonImage(button: button,type: .voice)
             textView.isHidden = false
             recordButton.isHidden = true
+            keyboardDissmiss()
         }
         
         
     }
     
     @objc private func moreButtonClick(button:UIButton) {
-         button.isSelected = !button.isSelected
+        button.isSelected = !button.isSelected
+        chatBarResignFirstResponder()
+        
         if button.isSelected {
             //: 取消第一响应
-            textView.resignFirstResponder()
             changeButtonImage(button: button,type: .text)
             
+            //: 显示键盘
+            keyboardShow(userKeyboard: moreKeyboard, isShow: true)
         }
         else{
             changeButtonImage(button: button,type: .more)
@@ -252,15 +277,53 @@ class ChatBar: UIView {
     @objc private func emojiButtonClick(button:UIButton) {
         
          button.isSelected = !button.isSelected
+        chatBarResignFirstResponder()
+        
         if button.isSelected {
             //: 取消第一响应
-            textView.resignFirstResponder()
             changeButtonImage(button: button,type: .text)
             
+            //: 显示键盘
+            keyboardShow(userKeyboard: emojiKeyboard, isShow: true)
         }
         else{
             changeButtonImage(button: button,type: .emoji)
         }
+    }
+    
+    //: 显示键盘
+    private func keyboardShow(userKeyboard keyboard:BaseKeyboard,isShow show:Bool) {
+        if let view = self.superview {
+            if show {
+                keyboard.show(inView: view, withAnimation: true){ [unowned self] in
+                    self.keyboardShowOpreation(view: view, keyboard: keyboard, show: show)
+                }
+            }
+            else {
+                keyboard.dissmiss(withAnimation: true){
+                   self.keyboardShowOpreation(view: view, keyboard: keyboard, show: show)
+                }
+            }
+            
+        }
+    }
+    
+    private func keyboardShowOpreation(view:UIView,keyboard:BaseKeyboard,show:Bool) {
+        let offsetY = show ? keyboard.frame.origin.y : ScreenHeight
+        self.snp.updateConstraints { (make) in
+            make.bottom.equalToSuperview().offset(offsetY - ScreenHeight)
+        }
+        
+        view.layoutIfNeeded()
+        
+        delegate?.chatBarDidSelectUserKeyboard(keyboardY: offsetY, chatBarHeight: self.bounds.height)
+    }
+    
+    private func keyboardDissmiss() {
+        keyboardShow(userKeyboard: emojiKeyboard, isShow: false)
+        keyboardShow(userKeyboard: moreKeyboard, isShow: false)
+        changeButtonImage(button: emojiButton,type: .emoji)
+        changeButtonImage(button: moreButton,type: .more)
     }
 //MARK: 外部接口
     
@@ -298,7 +361,7 @@ extension ChatBar:UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         //MARK: 发送
         if text == "\n" {
-            sendText(text: textView.text)
+            sendText(text: self.textView.message)
             return false
         }
         else {
@@ -308,10 +371,14 @@ extension ChatBar:UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
+        
         reloadText(true)
     }
     
     func textViewDidChange(_ textView: UITextView) {
+        
+        self.textView.updateText()
+        
         reloadText(true)
     }
     
@@ -320,13 +387,15 @@ extension ChatBar:UITextViewDelegate {
         if NSString(string: text).length > 0 {
             delegate?.chatBarSendText(text: text)
         }
-        textView.text = ""
+        
+        textView.clearText()
+        textView.attributedText = textView.message.toMsgString()
         reloadText(true)
     }
     
     func reloadText(_ animation:Bool) {
-        let font = textView.font!
-        let height = textView.text.fitSize(CGSize(width: textView.bounds.width - margin, height: CGFloat(MAXFLOAT)),font).height
+        let height = textView.attributedText.sizeToFitsAttribute(CGSize(width: textView.bounds.width - margin, height: CGFloat(MAXFLOAT))).height
+
         var textViewNewHeight:CGFloat = 0
         
         if height > chatBarTextViewMaxHeight {
@@ -387,4 +456,52 @@ protocol ChatBarDelegate:NSObjectProtocol {
     func chatBarWillCancelRecording(cancel:Bool)
     func chatBarFinshedRecording()
     func chatBarDidCancelRecording()
+    
+    func chatBarDidSelectUserKeyboard(keyboardY offsetY:CGFloat,chatBarHeight height:CGFloat)
+}
+
+//MARK: 表情键盘代理协议
+extension ChatBar:EmojiKeyboardDelegate {
+    func emojiKeyboardDidSelectdEmoji(withEmojiName text: String?, isDelete delete: Bool) {
+        
+        if let message = textView.message {
+            if delete {
+                
+                if message.lengthOfBytes(using: .utf8) > 1{
+                    
+                    //: 判断是否系统表情
+                    if message.isLastStringSystemEmoji() {
+                        let endIndex = message.endIndex
+                        let index  = message.index(endIndex, offsetBy: -4)
+                        textView.message = message.substring(to: index)
+                        reloadText(true)
+                    }
+                    else {
+                        let index  = message.index(message.endIndex, offsetBy: -1)
+                        textView.message = message.substring(to: index)
+                        reloadText(true)
+                    }
+                }
+            }
+            else {
+                if let msg = text {
+                    
+                    textView.message = message.appending(msg)
+                    reloadText(true)
+                }
+            }
+        }else{
+            if !delete {
+                textView.message = text
+                reloadText(true)
+            }
+        }
+
+        textView.attributedText = textView.message.toMsgString()
+    }
+    
+    //: 发送表情
+    func emojiKeyboardDidClickSendButton() {
+        sendText(text: textView.message)
+    }
 }

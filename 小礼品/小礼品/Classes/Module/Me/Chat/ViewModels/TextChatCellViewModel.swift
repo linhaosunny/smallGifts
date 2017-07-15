@@ -38,7 +38,8 @@ class TextChatCellViewModel: BaseChatCellViewModel {
         }
 
         //: 设置Label大小
-        var size = msgAttributedText!.sizeToFits(CGSize(width: maxMessageWidth, height: CGFloat(MAXFLOAT)))
+
+        var size = msgAttributedText!.sizeToFitsAttribute(CGSize(width: maxMessageWidth, height: CGFloat(MAXFLOAT)))
         if size == .zero {
             QL4("富文本字体自适应失败！")
         }

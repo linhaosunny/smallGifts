@@ -19,4 +19,9 @@ extension NSAttributedString {
         
         return string.fitSize(size, font as! UIFont)
     }
+    
+    func sizeToFitsAttribute(_ size:CGSize) -> CGSize {
+        
+        return boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil).size
+    }
 }

@@ -13,9 +13,18 @@ class ImageChatCell: BaseChatCell {
     var viewModel:ImageChatCellViewModel? {
         didSet {
             super.baseViewModel = viewModel
+            
+            if let path = viewModel!.imagePath {
+                imageMessage.image = UIImage(named: path)
+            }
         }
     }
 //MARK: 懒加载
+    lazy var imageMessage:UIImageView = { () -> UIImageView in
+       let view = UIImageView()
+        
+        return view
+    }()
 //MARK: 构造方法
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,6 +37,6 @@ class ImageChatCell: BaseChatCell {
     }
 //MARK: 私有方法
     private func setupImageChatCell() {
-        
+        addSubview(imageMessage)
     }
 }

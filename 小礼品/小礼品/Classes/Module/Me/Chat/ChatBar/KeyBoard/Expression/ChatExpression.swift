@@ -4,17 +4,65 @@
 //
 //  Created by 李莎鑫 on 2017/4/27.
 //  Copyright © 2017年 李莎鑫. All rights reserved.
-//  表情管理工具
+//  表情集
 
 import UIKit
-
+import LSXPropertyTool
 
 class ChatExpression: NSObject {
 //MARK: 属性
+    
     //: 默认表情 Face
-    var defaultFace:ChatEmojiGroup?
+    var defaultFace:ChatEmojiGroup = { () -> ChatEmojiGroup in
+        let emojiGroup = ChatEmojiGroup()
+        emojiGroup.type = .Face
+        emojiGroup.iconPath = "EmotionsEmojiHL"
+        
+        let path = Bundle.main.path(forResource: "FaceEmoji.json", ofType: nil)
+        let data = NSData(contentsOfFile: path!)
+        var array:Array<Any>?
+        do {
+            array = try JSONSerialization.jsonObject(with: data! as Data, options: .allowFragments) as? Array<Any>
+        }
+        catch{
+            
+        }
+        
+        emojiGroup.emojis = ExchangeToModel.model(withClassName: "Emoji", withArray: array)
+        
+        for i in 0..<emojiGroup.emojis!.count {
+            let emoji = emojiGroup.emojis![i] as! Emoji
+            emoji.type = .Face
+        }
+        
+        return emojiGroup
+    }()
+
     //: 默认系统Emoji
-    var defaultEmoji:ChatEmojiGroup?
+    var defaultEmoji:ChatEmojiGroup = { () -> ChatEmojiGroup in
+        let emojiGroup = ChatEmojiGroup()
+        emojiGroup.type = .Emoji
+        emojiGroup.iconPath = "EmotionsEmojiHL"
+        
+        let path = Bundle.main.path(forResource: "SystemEmoji.json", ofType: nil)
+        let data = NSData(contentsOfFile: path!)
+        var array:Array<Any>?
+        do {
+            array = try JSONSerialization.jsonObject(with: data! as Data, options: .allowFragments) as? Array<Any>
+        }
+        catch{
+            
+        }
+        
+        emojiGroup.emojis = ExchangeToModel.model(withClassName: "Emoji", withArray: array)
+        
+        for i in 0..<emojiGroup.emojis!.count {
+            let emoji = emojiGroup.emojis![i] as! Emoji
+            emoji.type = .Emoji
+        }
+        
+        return emojiGroup
+    }()
     //: 用户表情组
     var usrEmoji:Array<ChatEmojiGroup>?
     //: 用户偏好组

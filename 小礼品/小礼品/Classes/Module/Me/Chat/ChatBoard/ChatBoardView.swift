@@ -148,6 +148,8 @@ class ChatBoardView: UITableView {
         let indexPath = IndexPath(row: self.dataModel.msgModels.count - 1, section: 0)
         
         scrollToRow(at: indexPath, at: .bottom, animated: true)
+        scrollChatBoard(keyboardY: self.frame.maxY, chatBarHeight: margin*2, true)
+        
     }
     
     func scrollChatBoard(keyboardY offsetY:CGFloat,chatBarHeight height:CGFloat, _ animation:Bool) {

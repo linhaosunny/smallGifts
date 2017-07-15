@@ -26,6 +26,7 @@ let fontSize15:UIFont = UIFont.systemFont(ofSize: 15.0)
 let fontSize16:UIFont = UIFont.systemFont(ofSize: 16.0)
 let fontSize17:UIFont = UIFont.systemFont(ofSize: 17.0)
 let fontSize18:UIFont = UIFont.systemFont(ofSize: 18.0)
+let fontSize28:UIFont = UIFont.systemFont(ofSize: 28.0)
 //: 系统通知
 let SystemChangeRootViewControllerNotification = "SystemChangeRootViewControllerNotification"
 let ToControllerKey = "ToController"
