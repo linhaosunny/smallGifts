@@ -31,17 +31,26 @@ class ChatBarTextView: UITextView {
     func updateText() {
         var newText:String = ""
         if let index = oldText?.endIndex {
-            newText = text.substring(from: index)
+            if (oldText!.endIndex < text.endIndex) {
+                newText = text.substring(from: index)
+            }
+            else {
+                newText = text
+            }
         }
         else {
             newText = text
-            
         }
         
         oldText = text
         
         if let msg = message {
-            message = msg.appending(newText)
+            if (oldText!.endIndex < text.endIndex) {
+                message = msg.appending(newText)
+            }
+            else {
+                message = text
+            }
         }
         else {
             message = newText

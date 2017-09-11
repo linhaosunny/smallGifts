@@ -353,6 +353,7 @@ extension ChatBar:RecordButtonDelegate {
 //MARK: 代理方法
 extension ChatBar:UITextViewDelegate {
     
+    
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         isResignResponder = false
         return true
