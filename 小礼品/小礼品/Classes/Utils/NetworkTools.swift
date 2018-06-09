@@ -17,6 +17,7 @@ typealias FinishedOperation = (_ success:Bool,_ result:JSON?,_ error:Error?) ->(
 class NetworkTools: NSObject {
     static let shared = NetworkTools()
 
+    
 }
 
 //MARK: 基本请求方法
@@ -56,7 +57,7 @@ extension NetworkTools {
      - parameter parameters: 参数
      - parameter finished:   完成回调
      */
-    func get(_ url:String,parameters:[String:Any?],finished:@escaping FinishedOperation) {
+    func get(_ url:String,parameters:[String:Any],finished:@escaping FinishedOperation) {
         //: 显示网络活动状态
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     

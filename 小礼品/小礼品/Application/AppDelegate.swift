@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        //: 配置SMSSDK
        setupSMSSDK()
         
+        //:测试代码
+        AccountModel.testUpload()
         return true
     }
     

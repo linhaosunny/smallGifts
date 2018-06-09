@@ -6,7 +6,7 @@ target '小礼品' do
   use_frameworks!
 
   # Pods for 小礼品
-pod 'LSXPropertyTool', '~>0.0.9'           #个人写的属性生产器，字典转模型工具
+pod 'LSXPropertyTool', '0.0.9'           #个人写的属性生产器，字典转模型工具
 
 pod 'QorumLogs'                            #带颜色的log输出 Swift 3.0
 pod 'SnapKit', '~> 3.2.0'                  #Swift版本的AutoLayout 类似于OC 下的Masonry

@@ -161,5 +161,65 @@ extension AccountModel {
         }
         
     }
+    
+    
+    /// 测试
+    class func testUpload() {
 
+//        let url0 = "http://www.gzwise.top/etest/exam/paper/enterExamByApp.do?clientType=APP&custId=133460&signStr=36fefeebe63bda7a6e36045d1e7767daf98cc99491d7a467fb285f0d8f9b67a940d3d376ca771a1d8554acfc6b774445bbca88c6e3423525c1debfe556ef0e3e37283ec707e5066a7f18e6384d103903c66ddf7574eba0&equipment=ANDROID*2013022*864312021337666"
+//        let dic0 = self.jsonStrToDictionary("{\"state\":\"3\",\"instant\":\"true\",\"entity\":{\"orgId\":\"6073\",\"bizType\":\"KS\",\"ksProPaperId\":\"5308\",\"ksPaperId\":\"36420\",\"bizId\":\"57\",\"bizId2\":\"71\",\"anContent\":{\"ANSWER_5266_563036\":\"1741078\",\"ANSWER_5266_563024\":\"1741030\",\"ANSWER_5265_566127\":\"1748244\",\"ANSWER_5265_566253\":\"1748724\",\"ANSWER_5269_563441\":\"贪图靠近\",\"ANSWER_5267_563407\":\"fillIn\",\"answer_5267_563407_1958\":\"75\",\"ANSWER_5267_563336\":\"fillIn\",\"answer_5267_563336_1834\":\"123\"}}}")
+        
+        let custom : NSDictionary = [
+            "clientType" : "APP",
+            "custId" : "133460",
+            "signStr" : "36fefeebe63bda7a6e36045d1e7767daf98cc99491d7a467fb285f0d8f9b67a940d3d376ca771a1d8554acfc6b774445bbca88c6e3423525c1debfe556ef0e3e37283ec707e5066a7f18e6384d103903c66ddf7574eba0",
+            "equipment" : "ANDROID*2013022*864312021337666",
+        ]
+        
+        let url = "http://www.gzwise.top/etest/exam/paper/enterExamByApp.do"
+        if let str = self.dictionaryToJsonStr(custom) {
+           let  json = str.prefix(str.lengthOfBytes(using: .utf8) - 1) + "," + "\"state\":\"3\",\"instant\":\"true\",\"entity\":{\"orgId\":\"6073\",\"bizType\":\"KS\",\"ksProPaperId\":\"5308\",\"ksPaperId\":\"36420\",\"bizId\":\"57\",\"bizId2\":\"71\",\"anContent\":{\"ANSWER_5266_563036\":\"1741078\",\"ANSWER_5266_563024\":\"1741030\",\"ANSWER_5265_566127\":\"1748244\",\"ANSWER_5265_566253\":\"1748724\",\"ANSWER_5269_563441\":\"贪图靠近\",\"ANSWER_5267_563407\":\"fillIn\",\"answer_5267_563407_1958\":\"75\",\"ANSWER_5267_563336\":\"fillIn\",\"answer_5267_563336_1834\":\"123\"}}}"
+            QL2(json)
+            let dic = self.jsonStrToDictionary(json)
+            
+            NetworkTools.shared.post(url, parameters: dic as? [String : Any]) { (success, data, error) in
+                QL2(data)
+            }
+        }
+        
+    }
+
+    class func jsonStrToDictionary(_ str:String) -> NSDictionary? {
+       let data = str.data(using: .utf8)
+        do {
+            let dic = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)
+            
+            return dic as? NSDictionary
+        }catch {
+        
+        }
+        
+        return nil
+    }
+    
+    class func dictionaryToJsonStr(_ dic:NSDictionary) ->String? {
+        do {
+            
+            let data = try JSONSerialization.data(withJSONObject: dic, options: JSONSerialization.WritingOptions.prettyPrinted)
+    
+            if let str = String(data: data, encoding: String.Encoding.utf8) {
+                var jsonStr = ""
+                jsonStr = NSString(string: str).replacingOccurrences(of: " ", with: "")
+                jsonStr = NSString(string: str).replacingOccurrences(of: "\n", with: "")
+            
+                return jsonStr
+            }
+            
+            return nil
+        }catch {
+            
+        }
+        
+        return nil
+    }
 }
